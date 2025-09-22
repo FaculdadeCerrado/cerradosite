@@ -34,10 +34,10 @@ const NewsSection = () => {
       <div className="flex items-start justify-between p-8">
         <div>
           <h2 className="text-3xl font-bold text-purple-600 mb-2">
-            Nossa Comunidade
+            Nossa Ultimas Notícias
           </h2>
           <p className="text-gray-600">
-            Conecte-se com as novidades da Católica
+            Fique por dentro das últimas novidades
           </p>
         </div>
         <a
