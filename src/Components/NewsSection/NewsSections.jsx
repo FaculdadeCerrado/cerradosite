@@ -30,7 +30,7 @@ const NewsSection = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-white relative overflow-hidden">
+    <section className="min-h-screen bg-white  overflow-hidden">
       <div className="flex items-start justify-between p-8">
         <div>
           <h2 className="text-3xl font-bold text-purple-600 mb-2">
