@@ -1,15 +1,10 @@
 const faqData = [
   {
     title: "",
-    content: [
-     
-    ],
+    content: [],
   },
   {
     title: "",
-    content: [
-      
-      ,
-    ],
+    content: [,],
   },
- 
+];
