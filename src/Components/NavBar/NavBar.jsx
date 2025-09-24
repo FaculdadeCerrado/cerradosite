@@ -8,25 +8,25 @@ const Navbar = () => {
     <header className="w-full">
       {/* <header className="w-full fixed top-0 left-0 z-50"> */}
       {/* Topbar */}
-      <div className="border-b-2 border-b-gray-200  h-8 flex items-center justify-end px-6 space-x-6 text-sm font-medium">
+      <div className="bg-gray-200  h-8 flex items-center justify-center px-6 space-x-6 text-sm font-medium">
         <a
           href="https://faccerrado.npjdigital.com.br"
-          className="flex items-center gap-1 hover:text-gray-600">
+          className=" flex items-center gap-1 hover:text-gray-600">
           <Gavel size={20} /> NPJ Digital
         </a>
         <a
           href="https://www.unicollege.net/cerrado"
-          className="flex items-center gap-1 hover:text-gray-600">
+          className=" flex items-center gap-1 hover:text-gray-600">
           <Users2 size={20} /> Portal do Aluno
         </a>
         <a
           href="https://www.cerrado.eadmax.net/login/index.php"
-          className="flex items-center gap-1 hover:text-gray-600">
+          className=" flex items-center gap-1 hover:text-gray-600">
           <LaptopMinimalCheck size={20} /> Moodle
         </a>
         <a
           href="https://www.unicollege.net/cerrado"
-          className="flex items-center gap-1 hover:text-gray-600">
+          className=" flex items-center gap-1 hover:text-gray-600">
           <NotebookPen size={20} /> Portal do Professor
         </a>
       </div>

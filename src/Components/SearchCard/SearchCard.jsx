@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
-import { Search } from "lucide-react";
+import {
+  Search,
+  GraduationCap,
+  BookOpen,
+  Layers,
+  Briefcase,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { TypeWriter } from "../TypeWriter/TypeWriter";
 
@@ -19,6 +25,13 @@ const courseCategories = [
   },
   { value: "cursos-tecnicos", label: "Cursos Técnicos e Profissionalizantes" },
 ];
+
+const categoryIcons = {
+  graduacao: GraduationCap,
+  "pos-graduacao": BookOpen,
+  "curso-horas-complementares": Layers,
+  "cursos-tecnicos": Briefcase,
+};
 
 const texts = [
   //   "Digite o nome do curso...",
@@ -96,7 +109,7 @@ export default function CourseSearch() {
 
           {/* Search  */}
           <div className="max-w-5xl mx-auto">
-            <div className="bg-gradient-to-br from-purple-50 to-orange-50 rounded-2xl p-8 border-2 border-purple-200 shadow-xl">
+            <div className="bg-gradient-to-br from-purple-70 to-orange-70 rounded-2xl p-8 border-2 border-purple-300 shadow-xl">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
                 {/* Category Filter */}
                 <div className="lg:col-span-1">
@@ -224,24 +237,37 @@ export default function CourseSearch() {
                 "from-green-500 to-green-700",
                 "from-purple-600 to-orange-600",
               ];
+
+              const Icon = categoryIcons[category.value]; // pega ícone certo
+
               return (
                 <div
                   key={category.value}
                   className="group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-2xl bg-white border-2 border-gray-200 text-white overflow-hidden hover:border-purple-300 rounded-xl"
-                  onClick={() => handleCategoryCardClick(category.value)}>
+                  onClick={() => handleCategoryCardClick(category.value)}
+                  style={{
+                    boxShadow:
+                      "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+                  }}>
                   <div className="p-8 h-56 flex flex-col justify-center items-center text-center relative">
+                    {/* background gradiente */}
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${gradients[index]} opacity-90 group-hover:opacity-100 transition-all duration-500 rounded-xl`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-xl" />
 
-                    <div className="relative z-10 transform group-hover:scale-105 transition-transform duration-300">
+                    {/* conteúdo */}
+                    <div className="relative z-10 transform group-hover:scale-105 transition-transform duration-300 flex flex-col items-center">
+                      {/* ícone */}
+                      {Icon && <Icon className="w-12 h-12 mb-3 text-white" />}
+                      {/* título */}
                       <h3 className="text-xl font-bold mb-4 leading-tight text-white">
                         {category.label}
                       </h3>
                       <div className="w-16 h-1 bg-white/80 rounded-full mx-auto group-hover:w-20 transition-all duration-300" />
                     </div>
 
+                    {/* botão search */}
                     <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                       <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                         <Search className="w-4 h-4 text-white" />
