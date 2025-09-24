@@ -8,7 +8,7 @@ import NewsSection from "../Components/NewsSection/NewsSections";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white  flex flex-col items-center ">
-      {/* <NavBar /> */}
+      <NavBar />
       <BannerHome />
       {/* <TourVirtual /> */}
       <SearchCard />

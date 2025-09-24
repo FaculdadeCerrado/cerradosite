@@ -1,27 +1,60 @@
 import React from "react";
-import Logo from "../Logo/Logo";
+import { Gavel, Users2, LaptopMinimalCheck, NotebookPen } from "lucide-react";
 import RoutesNavBar from "../RoutesNavBar/RoutesNavBar";
+import logo from "../../images/Logo/LogBar.png";
 
-const NavBar = () => {
+const Navbar = () => {
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[90%] max-w-7xl">
-      <div
-        className="backdrop-blur-sm bg-yellow-300/30 border-[3px] border-yellow-300 rounded-full px-8 py-4 shadow-2xl shadow-white/10"
-        style={{ boxShadow: "rgba(255, 238, 0, 0.76) 0px 10px 30px" }}>
-        <div className="flex items-center">
-          <div>
-            <Logo />
-          </div>
-          <div
-            className="flex-1 flex justify-center text-black font-semibold"
-            style={{ textShadow: "0 1px 1px rgba(0, 0, 0, 0.9)" }}>
-            <RoutesNavBar />
-          </div>
-          <div className="w-[64px]" />
-        </div>
+    <header className="w-full">
+      {/* <header className="w-full fixed top-0 left-0 z-50"> */}
+      {/* Topbar */}
+      <div className="border-b-2 border-b-gray-200  h-8 flex items-center justify-end px-6 space-x-6 text-sm font-medium">
+        <a
+          href="https://faccerrado.npjdigital.com.br"
+          className="flex items-center gap-1 hover:text-gray-600">
+          <Gavel size={20} /> NPJ Digital
+        </a>
+        <a
+          href="https://www.unicollege.net/cerrado"
+          className="flex items-center gap-1 hover:text-gray-600">
+          <Users2 size={20} /> Portal do Aluno
+        </a>
+        <a
+          href="https://www.cerrado.eadmax.net/login/index.php"
+          className="flex items-center gap-1 hover:text-gray-600">
+          <LaptopMinimalCheck size={20} /> Moodle
+        </a>
+        <a
+          href="https://www.unicollege.net/cerrado"
+          className="flex items-center gap-1 hover:text-gray-600">
+          <NotebookPen size={20} /> Portal do Professor
+        </a>
       </div>
-    </nav>
+
+      {/* Navbar principal */}
+      <div
+        className="bg-white relative flex items-center justify-around px-8 py-2 mb-4" // <-- margem inferior
+        style={{
+          boxShadow: `
+            0px 6px 0px #1AB04B,
+            0px 12px 0px #F58220,
+            0px 16px 0px #6B3E98
+          `,
+        }}>
+        {/* Logo */}
+        <div className="flex items-center space-x-3">
+          <img
+            src={logo}
+            alt="Faculdade Cerrado"
+            className="h-16 w-auto object-contain" // <-- logo maior
+          />
+        </div>
+
+        {/* Links de navegação */}
+        <RoutesNavBar />
+      </div>
+    </header>
   );
 };
 
-export default NavBar;
+export default Navbar;

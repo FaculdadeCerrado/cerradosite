@@ -8,13 +8,13 @@ export const bannerImages = [
     mobile: "",
     alt: " ",
   },
-  {
-    id: 2,
-    desktop: QuartaVerde,
-    mobile: "",
-    alt: "aa",
-    link: "#",
-  },
+  // {
+  //   id: 2,
+  //   desktop: QuartaVerde,
+  //   mobile: "",
+  //   alt: "aa",
+  //   link: "#",
+  // },
 
   // {
   //   id: 3,
