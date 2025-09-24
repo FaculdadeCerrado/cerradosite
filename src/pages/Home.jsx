@@ -16,7 +16,7 @@ export default function Home() {
       <SearchCard />
       <NewsSection />
       <AboutSectionHome />
-      <FaqSection />
+      {/* <FaqSection /> */}
       <WhatsAppWidget />
       {/* <Footer /> */}
     </main>
