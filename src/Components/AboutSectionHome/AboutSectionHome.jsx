@@ -10,7 +10,7 @@ const AboutSectionHome = () => {
         backgroundImage: `url(${BackGroundAboutHome})`,
       }}>
       {/* Overlay opcional para deixar o texto mais legível */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      <div className="absolute inset-0 bg-black/70"></div>
 
       <div className="relative container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Texto à esquerda */}
@@ -18,7 +18,7 @@ const AboutSectionHome = () => {
           <h1 className="text-lg md:text-4xl font-bold mb-4">
             Por que escolher a Faculdade Cerrado?
           </h1>
-          <p className="text-lg md:text-xl mb-6">
+          <p className="text-lg font-bold md:text-xl mb-6">
             Estudar na Faculdade Cerrado é optar por qualidade, inovação e
             proximidade com o mercado de trabalho. Com professores experientes,
             infraestrutura moderna e um ambiente acolhedor, você desenvolve
