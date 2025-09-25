@@ -10,7 +10,7 @@ const AboutSectionHome = () => {
         backgroundImage: `url(${BackGroundAboutHome})`,
       }}>
       {/* Overlay opcional para deixar o texto mais legível */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/60"></div>
 
       <div className="relative container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Texto à esquerda */}

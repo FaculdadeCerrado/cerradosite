@@ -33,7 +33,7 @@ const NewsSection = () => {
 
   return (
     <section
-      className="min-h-screen bg-no-repeat bg-cover relative overflow-hidden mb-12 "
+      className="min-h-screen bg-no-repeat bg-cover relative overflow-hidden  "
       style={{
         backgroundImage: `url(${fundoSection})`,
       }}>

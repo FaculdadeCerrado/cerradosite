@@ -36,9 +36,9 @@ const Navbar = () => {
         className="bg-white relative flex items-center justify-around px-8 py-2 mb-4" // <-- margem inferior
         style={{
           boxShadow: `
-            0px 6px 0px #1AB04B,
-            0px 12px 0px #F58220,
-            0px 16px 0px #6B3E98
+            0px 6px 0px #6B3E98,
+            0px 12px 0px #1AB04B,
+            0px 18px 0px #F58220
           `,
         }}>
         {/* Logo */}

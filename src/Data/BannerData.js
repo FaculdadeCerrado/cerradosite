@@ -1,10 +1,9 @@
-import QuartaVerde from "../images/QuartaVerde.png";
-import PrecoBaixo from "../images/PrecoBaixo.png";
+import Banner01 from "../images/Banner01.png";
 
 export const bannerImages = [
   {
     id: 1,
-    desktop: PrecoBaixo,
+    desktop: Banner01,
     mobile: "",
     alt: " ",
   },

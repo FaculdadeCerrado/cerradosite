@@ -6,6 +6,7 @@ import SearchCard from "../Components/SearchCard/SearchCard";
 import NewsSection from "../Components/NewsSection/NewsSections";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 import AboutSectionHome from "../Components/AboutSectionHome/AboutSectionHome";
+import SectionSociais from "../Components/SectionSociais/SectionSociais";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       {/* <TourVirtual /> */}
       <SearchCard />
       <NewsSection />
+      <SectionSociais />
       <AboutSectionHome />
       {/* <FaqSection /> */}
       <WhatsAppWidget />
