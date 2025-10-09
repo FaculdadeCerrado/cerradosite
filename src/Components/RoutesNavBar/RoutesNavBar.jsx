@@ -1,11 +1,31 @@
 const RoutesNavBar = () => {
   return (
     <div className="hidden md:flex items-center space-x-8">
-      <a
-        href="#produtos"
-        className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
-        Institucional
-      </a>
+      <div className="relative group ">
+        <a
+          href="#institucional"
+          className="relative text-black font-medium text-xl transition-colors 
+    after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 
+    after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 
+    after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0">
+          Institucional
+        </a>
+        {/* Dropdown */}
+        <div
+          className="absolute left-0 top-full mt-1 w-48 bg-white shadow-lg rounded-md
+    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10">
+          <a href="#sobre-nos" className="block px-4 py-2 hover:bg-orange-100">
+            Sobre nós
+          </a>
+          <a href="#missao" className="block px-4 py-2 hover:bg-orange-100">
+            Missão
+          </a>
+          <a href="#valores" className="block px-4 py-2 hover:bg-orange-100">
+            Valores
+          </a>
+        </div>
+      </div>
+
       <a
         href="#produtos"
         className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
@@ -16,11 +36,46 @@ const RoutesNavBar = () => {
         className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
         Cursos
       </a>
-      <a
-        href="#produtos"
-        className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
-        Biblioteca
-      </a>
+      <div className="relative group ">
+        <a
+          href="/biblioteca"
+          className="relative text-black font-medium text-xl transition-colors 
+    after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 
+    after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 
+    after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0">
+          Biblioteca
+        </a>
+        {/* Dropdown */}
+        <div
+          className="absolute left-0 top-full mt-1 w-[250px] bg-white shadow-lg rounded-md
+    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10">
+          <a
+            href="/repositorio-academico"
+            className="block px-4 py-2 hover:bg-orange-100">
+            Repositório Acadêmico
+          </a>
+          <a
+            href="/repositorio-academico/#sobre-nos"
+            className="block px-4 py-2 hover:bg-orange-100">
+            Sobre o RI
+          </a>
+          <a
+            href="/repositorio-academico/#missao"
+            className="block px-4 py-2 hover:bg-orange-100">
+            Missão
+          </a>
+          <a
+            href="/repositorio-academico/#periodicos"
+            className="block px-4 py-2 hover:bg-orange-100">
+            Periódicos
+          </a>
+          <a
+            href="/repositorio-academico/#projetos-integradores"
+            className="block px-4 py-2 hover:bg-orange-100">
+            Projetos Integradores
+          </a>
+        </div>
+      </div>
       <a
         href="#produtos"
         className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">

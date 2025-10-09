@@ -1,6 +1,7 @@
 import Banner01 from "../images/Banner01.png";
+import BannerRepositorioAcademico from "../images/BannerRepositorioAcademico.png";
 
-export const bannerImages = [
+export const HomeBanners = [
   {
     id: 1,
     desktop: Banner01,
@@ -8,18 +9,26 @@ export const bannerImages = [
     alt: " ",
   },
   // {
-  //   id: 2,
-  //   desktop: QuartaVerde,
-  //   mobile: "",
-  //   alt: "aa",
-  //   link: "#",
+  //  id: 1,
+  // desktop: Banner03,
+  // mobile: "",
+  // alt: "Banner About 1",
+  // link: "#about",
   // },
+];
 
+export const RepositorioAcademicoBanners = [
+  {
+    id: 1,
+    desktop: BannerRepositorioAcademico,
+    mobile: "",
+    alt: " ",
+  },
   // {
-  //   id: 3,
-  //   desktop: "",
-  //   mobile: "",
-  //   alt: " ",
-  //
+  //  id: 1,
+  // desktop: Banner03,
+  // mobile: "",
+  // alt: "Banner About 1",
+  // link: "#about",
   // },
 ];
