@@ -54,26 +54,6 @@ const RoutesNavBar = () => {
             className="block px-4 py-2 hover:bg-orange-100">
             Repositório Acadêmico
           </a>
-          <a
-            href="/repositorio-academico/#sobre-nos"
-            className="block px-4 py-2 hover:bg-orange-100">
-            Sobre o RI
-          </a>
-          <a
-            href="/repositorio-academico/#missao"
-            className="block px-4 py-2 hover:bg-orange-100">
-            Missão
-          </a>
-          <a
-            href="/repositorio-academico/#periodicos"
-            className="block px-4 py-2 hover:bg-orange-100">
-            Periódicos
-          </a>
-          <a
-            href="/repositorio-academico/#projetos-integradores"
-            className="block px-4 py-2 hover:bg-orange-100">
-            Projetos Integradores
-          </a>
         </div>
       </div>
       <a
@@ -83,7 +63,7 @@ const RoutesNavBar = () => {
       </a>
 
       <a
-        href="#produtos"
+        href="/ouvidoria"
         className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
         Ouvidoria
       </a>

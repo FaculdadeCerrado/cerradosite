@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import ValidadorDiploma from "./pages/Validador";
 import TourVirtual from "./Components/TourVirtual/TourVirtual";
 import RepositorioAcademico from "./pages/RepositorioAcademico";
+import Ouvidoria from "./pages/Ouvidoria";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
         />
         <Route path="/validador" element={<ValidadorDiploma />} />
         <Route path="/teste" element={<TourVirtual />} />
+        <Route path="/ouvidoria" element={<Ouvidoria />} />
       </Routes>
     </Router>
   );
