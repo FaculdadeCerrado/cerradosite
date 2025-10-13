@@ -5,7 +5,7 @@ import Banner from "../Components/BannerHome/BannerHome";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 import { Mail, Phone, MapPin, X } from "lucide-react";
 
-export default function Home() {
+export default function Ouvidoria() {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",

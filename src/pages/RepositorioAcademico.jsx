@@ -4,7 +4,7 @@ import { RepositorioAcademicoBanners } from "../Data/BannerData.js";
 import Banner from "../Components/BannerHome/BannerHome";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 
-export default function Home() {
+export default function RepositorioAcademico() {
   return (
     <main className="min-h-screen bg-white  flex flex-col items-center ">
       <NavBar />
