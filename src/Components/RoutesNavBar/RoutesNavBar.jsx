@@ -5,24 +5,75 @@ const RoutesNavBar = () => {
         <a
           href="#institucional"
           className="relative text-black font-medium text-xl transition-colors 
-    after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 
-    after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 
-    after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0">
+after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 
+after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 
+after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0 group">
           Institucional
         </a>
+
         {/* Dropdown */}
         <div
-          className="absolute left-0 top-full mt-1 w-48 bg-white shadow-lg rounded-md
-    opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10">
-          <a href="#sobre-nos" className="block px-4 py-2 hover:bg-orange-100">
-            Sobre nós
-          </a>
-          <a href="#missao" className="block px-4 py-2 hover:bg-orange-100">
-            Missão
-          </a>
-          <a href="#valores" className="block px-4 py-2 hover:bg-orange-100">
-            Valores
-          </a>
+          className="absolute left-0 top-full mt-1 w-80 bg-white shadow-lg rounded-md
+opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10 grid grid-cols-2 gap-4 p-4">
+          {/* Coluna Institucional */}
+          <div>
+            <p className="text-orange-500 font-semibold border-b border-orange-200 mb-2 pb-1">
+              Institucional
+            </p>
+            <a
+              href="#sobre-nos"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Sobre nós
+            </a>
+            <a
+              href="#missao"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Missão
+            </a>
+            <a
+              href="#valores"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Valores
+            </a>
+          </div>
+
+          {/* Coluna Comunicação */}
+          <div>
+            <p className="text-orange-500 font-semibold border-b border-orange-200 mb-2 pb-1">
+              Comunicação
+            </p>
+            <a
+              href="#redes-sociais"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Eventos
+            </a>
+            <a
+              href="#ouvidoria"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Noticias
+            </a>
+            <a
+              href="#contato"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Vídeos
+            </a>
+            <a
+              href="#redes-sociais"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Fotos
+            </a>
+
+            <a
+              href="#redes-sociais"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              sla
+            </a>
+            <a
+              href="#redes-sociais"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              sla 2
+            </a>
+          </div>
         </div>
       </div>
 
