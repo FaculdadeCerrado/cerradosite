@@ -5,6 +5,7 @@ import TourVirtual from "./Components/TourVirtual/TourVirtual";
 import RepositorioAcademico from "./pages/RepositorioAcademico";
 import Ouvidoria from "./pages/Ouvidoria";
 import Comunicacao from "./pages/Comunicacao";
+import HomeBiblioteca from "./pages/Biblioteca/HomeBiblioteca";
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
         <Route path="/teste" element={<TourVirtual />} />
         <Route path="/ouvidoria" element={<Ouvidoria />} />
         <Route path="/comunicao" element={<Comunicacao />} />
+        <Route path="/biblioteca" element={<HomeBiblioteca />} />
       </Routes>
     </Router>
   );
