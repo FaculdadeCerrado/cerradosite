@@ -6,6 +6,9 @@ import RepositorioAcademico from "./pages/RepositorioAcademico";
 import Ouvidoria from "./pages/Ouvidoria";
 import Comunicacao from "./pages/Comunicacao";
 import HomeBiblioteca from "./pages/Biblioteca/HomeBiblioteca";
+import JornaisEletronicos from "./pages/Biblioteca/JornaisEletronicos";
+import PeriodicosEletronicos from "./pages/Biblioteca/PeriodicosEletronicos";
+import BaseDeDados from "./pages/Biblioteca/BasesDeDados";
 
 function AppRoutes() {
   return (
@@ -21,6 +24,12 @@ function AppRoutes() {
         <Route path="/ouvidoria" element={<Ouvidoria />} />
         <Route path="/comunicao" element={<Comunicacao />} />
         <Route path="/biblioteca" element={<HomeBiblioteca />} />
+        <Route path="/jornais-eletronicos" element={<JornaisEletronicos />} />
+        <Route
+          path="/periodicos-eletronicos"
+          element={<PeriodicosEletronicos />}
+        />
+        <Route path="/base-de-dados" element={<BaseDeDados />} />
       </Routes>
     </Router>
   );
