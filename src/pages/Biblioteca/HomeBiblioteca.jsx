@@ -29,7 +29,7 @@ export default function HomeBiblioteca() {
       <FullScreenBannerVideo
         desktopSrc={heroDesktop}
         overlay={
-          <div className="text-white  px-4 max-w-6xl w-full">
+          <div className="text-white text-center px-4 max-w-6xl w-full">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-3">
               Seja bem-vindo à
             </h1>

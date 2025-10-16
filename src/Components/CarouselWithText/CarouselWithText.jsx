@@ -24,7 +24,7 @@ export default function CarouselWithText({ slides }) {
   const { image, title, description } = slides[currentIndex];
 
   return (
-    <div className="max-w-5xl mx-auto relative flex items-center bg-gray-50 p-6 rounded-lg shadow-lg">
+    <div className="max-w-5xl mx-auto relative flex items-center bg-gray-50 p-6 m-8 rounded-lg shadow-lg">
       <button
         onClick={prevSlide}
         className="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition">
