@@ -8,6 +8,8 @@ import RecursosPrincipais from "../../Components/RecursosPrincipais/RecursosPrin
 import Unibook from "../../images/Portais/Unibook.png";
 import Curatoria from "../../images/Portais/curatoria.png";
 import Pearson from "../../images/Portais/pearson.png";
+import CarouselWithText from "../../Components/CarouselWithText/CarouselWithText";
+import { carouselDataBiblioteca } from "../../Data/CarouselData";
 
 export default function HomeBiblioteca() {
   const [modalInfo, setModalInfo] = useState({
@@ -20,8 +22,6 @@ export default function HomeBiblioteca() {
   const abrirModal = (title, content) => {
     setModalInfo({ open: true, title, content });
   };
-
-  // Fechar modal
   const fecharModal = () => setModalInfo({ ...modalInfo, open: false });
   return (
     <main>
@@ -29,7 +29,7 @@ export default function HomeBiblioteca() {
       <FullScreenBannerVideo
         desktopSrc={heroDesktop}
         overlay={
-          <div className="text-white text-center px-4 ">
+          <div className="text-white  px-4 max-w-6xl w-full">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-3">
               Seja bem-vindo à
             </h1>
@@ -111,7 +111,9 @@ export default function HomeBiblioteca() {
           </div>
         }
       />
+      <CarouselWithText slides={carouselDataBiblioteca} />
       <RecursosPrincipais />
+
       <NormasRegulamentos />
       {/* Modal */}
       {modalInfo.open && (

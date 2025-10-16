@@ -214,15 +214,13 @@ export default function PeriodicosEletronicos() {
       <Banner images={PeriodicosBanners} />
       <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-6 flex flex-col items-center">
         <div className="max-w-6xl w-full">
-          <h1 className="text-center text-3xl md:text-4xl font-bold text-gray-800 mb-8">
-            PERIÓDICOS ELETRÔNICOS
-          </h1>
-
-          <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="flex flex-col gap-10 items-center">
             {/* Coluna esquerda - Descrição */}
             <div className="text-center md:text-left">
-              <div className="flex justify-center md:justify-start mb-6">
-                <Smartphone className="w-10 h-10 text-green-500" />
+              <div className="flex   justify-center md:justify-start mb-6">
+                <h1 className="text-center text-3xl md:text-4xl font-bold text-gray-800 ">
+                  PERIÓDICOS ELETRÔNICOS
+                </h1>
               </div>
               <p className="text-gray-600 leading-relaxed text-lg">
                 Estão listadas as revistas eletrônicas (periódicos) mais
@@ -252,7 +250,7 @@ export default function PeriodicosEletronicos() {
               </div>
 
               {/* Lista de periódicos */}
-              <ul className="list-decimal pl-6 space-y-3 text-blue-500 overflow-y-auto pr-3">
+              <ul className="list-decimal pl-6 space-y-3  overflow-y-auto pr-3">
                 {periodicos[filtro].map((item, index) => (
                   <li
                     key={index}

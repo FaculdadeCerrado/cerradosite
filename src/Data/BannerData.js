@@ -2,7 +2,7 @@ import Banner01 from "../images/Banners/Banner01.png";
 import BannerRepositorioAcademico from "../images/Banners/BannerRepositorioAcademico.png";
 import OuvidoriaBanner from "../images/Banners/BannerOuvidoria.png";
 import JornaisEletronicosBanner from "../images/Banners/BannerJornaisEletronicos.png";
-import PeriodicosEletronicosBanner from "../images/Banners/BannerPeriodicosEletronicos.png.png";
+import PeriodicosEletronicosBanner from "../images/Banners/BannerPeriodicosEletronicos.png";
 
 export const HomeBanners = [
   {
