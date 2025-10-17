@@ -9,6 +9,7 @@ import HomeBiblioteca from "./pages/Biblioteca/HomeBiblioteca";
 import JornaisEletronicos from "./pages/Biblioteca/JornaisEletronicos";
 import PeriodicosEletronicos from "./pages/Biblioteca/PeriodicosEletronicos";
 import BaseDeDados from "./pages/Biblioteca/BasesDeDados";
+import RepositorioPaulo from "./pages/Biblioteca/RepositorioPaulo";
 
 function AppRoutes() {
   return (
@@ -30,6 +31,10 @@ function AppRoutes() {
           element={<PeriodicosEletronicos />}
         />
         <Route path="/base-de-dados" element={<BaseDeDados />} />
+        <Route
+          path="/repositorio-paulo-freire"
+          element={<RepositorioPaulo />}
+        />
       </Routes>
     </Router>
   );
