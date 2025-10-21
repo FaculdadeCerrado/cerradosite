@@ -10,12 +10,16 @@ import JornaisEletronicos from "./pages/Biblioteca/JornaisEletronicos";
 import PeriodicosEletronicos from "./pages/Biblioteca/PeriodicosEletronicos";
 import BaseDeDados from "./pages/Biblioteca/BasesDeDados";
 import RepositorioPaulo from "./pages/Biblioteca/RepositorioPaulo";
+import Sobre from "./pages/Sobre";
 
 function AppRoutes() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/sobre" element={<Sobre />} />
+        <Route path="/comunicacao" element={<Comunicacao />} />
+
         <Route
           path="/repositorio-academico"
           element={<RepositorioAcademico />}
@@ -23,7 +27,6 @@ function AppRoutes() {
         <Route path="/validador" element={<ValidadorDiploma />} />
         <Route path="/teste" element={<TourVirtual />} />
         <Route path="/ouvidoria" element={<Ouvidoria />} />
-        <Route path="/comunicao" element={<Comunicacao />} />
         <Route path="/biblioteca" element={<HomeBiblioteca />} />
         <Route path="/jornais-eletronicos" element={<JornaisEletronicos />} />
         <Route

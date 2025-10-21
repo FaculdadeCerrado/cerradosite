@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 const RoutesNavBar = () => {
+  const navigate = useNavigate();
+
+  const goToComunicacao = (categoria) => {
+    navigate("/comunicacao", { state: { categoria } });
+  };
   return (
     <div className="hidden md:flex items-center space-x-8">
       <div className="relative group ">
@@ -42,37 +49,31 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opaci
             <p className="text-orange-500 font-semibold border-b border-orange-200 mb-2 pb-1">
               Comunicação
             </p>
-            <a
-              href="#redes-sociais"
-              className="block px-2 py-1 rounded hover:bg-orange-100">
+            <button
+              onClick={() => goToComunicacao("eventos")}
+              className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
               Eventos
-            </a>
-            <a
-              href="#ouvidoria"
-              className="block px-2 py-1 rounded hover:bg-orange-100">
-              Noticias
-            </a>
-            <a
-              href="#contato"
-              className="block px-2 py-1 rounded hover:bg-orange-100">
+            </button>
+            <button
+              onClick={() => goToComunicacao("noticias")}
+              className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
+              Notícias
+            </button>
+            <button
+              onClick={() => goToComunicacao("videos")}
+              className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
               Vídeos
-            </a>
-            <a
-              href="#redes-sociais"
-              className="block px-2 py-1 rounded hover:bg-orange-100">
+            </button>
+            <button
+              onClick={() => goToComunicacao("fotos")}
+              className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
               Fotos
-            </a>
-
-            <a
-              href="#redes-sociais"
-              className="block px-2 py-1 rounded hover:bg-orange-100">
-              sla
-            </a>
-            <a
-              href="#redes-sociais"
-              className="block px-2 py-1 rounded hover:bg-orange-100">
-              sla 2
-            </a>
+            </button>
+            <button
+              onClick={() => goToComunicacao("comunicados")}
+              className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
+              Comunicados
+            </button>
           </div>
         </div>
       </div>
