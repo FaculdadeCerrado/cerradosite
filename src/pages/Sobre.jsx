@@ -77,7 +77,12 @@ export default function FaculdadeCERRADO() {
           </div>
 
           {/* Área da Foto */}
-          <aside className="bg-white border rounded-lg p-4 shadow-sm">
+          <aside
+            className="bg-white border rounded-lg p-4 "
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            }}>
             <div className="flex flex-col items-center gap-4">
               <div className="w-36 h-36 rounded-md bg-gray-100 overflow-hidden flex items-center justify-center">
                 <img
@@ -107,7 +112,12 @@ export default function FaculdadeCERRADO() {
 
         {/* Seção: Quem Somos */}
         <section id="sobre" className="mt-12  gap-6 ">
-          <div className="md:col-span-2 bg-white p-6 rounded-lg shadow-sm">
+          <div
+            className="md:col-span-2 bg-white p-6 rounded-lg "
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            }}>
             <h3 className="text-3xl sm:text-4xl font-bold">Quem Somos</h3>
             <p className="mt-4 text-gray-700 text-lg leading-relaxed">
               A Faculdade CERRADO constitui-se como uma instituição privada de
@@ -136,7 +146,13 @@ export default function FaculdadeCERRADO() {
 
         {/* Seção: Missão, Visão e Valores */}
         <section className="mt-10 grid gap-6 md:grid-cols-3">
-          <div id="missao" className="bg-white p-6 rounded-lg shadow-sm">
+          <div
+            id="missao"
+            className="bg-white p-6 rounded-lg "
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            }}>
             <h4 className="text-2xl sm:text-3xl font-semibold">Nossa Missão</h4>
             <p className="text-gray-700 mt-2 text-lg text-justify">
               Produzir, sistematizar e difundir conhecimentos que contribuam
@@ -147,7 +163,13 @@ export default function FaculdadeCERRADO() {
             </p>
           </div>
 
-          <div id="visao" className="bg-white p-6 rounded-lg shadow-sm">
+          <div
+            id="visao"
+            className="bg-white p-6 rounded-lg "
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            }}>
             <h4 className="text-2xl sm:text-3xl font-semibold">Nossa Visão</h4>
             <p className="text-gray-700 mt-2 text-lg text-justify">
               Como visão sociológica e filosófica, trabalha na construção de
@@ -165,7 +187,12 @@ export default function FaculdadeCERRADO() {
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm">
+          <div
+            className="bg-white p-6 rounded-lg "
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            }}>
             <h4 className="text-2xl sm:text-3xl font-semibold">
               Nossos Valores
             </h4>

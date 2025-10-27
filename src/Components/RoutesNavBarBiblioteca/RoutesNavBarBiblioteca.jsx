@@ -8,7 +8,7 @@ const RoutesNavBar = () => {
 after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 
 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-500 
 after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0 group">
-          Institucional
+          Repositorio
         </a>
 
         {/* Dropdown */}
@@ -44,23 +44,22 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opaci
       <a
         href="#produtos"
         className="relative text-white font-semibold text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
-        Clínica Escola
+        Normas
       </a>
       <a
         href="#produtos"
         className="relative text-white font-semibold text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
-        Vestibular
+        Plataformas
       </a>
-
+      <a
+        href="#produtos"
+        className="relative text-white font-semibold text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
+        Renovar
+      </a>
       <a
         href="/ouvidoria"
         className="relative text-white font-semibold text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
         Ouvidoria
-      </a>
-      <a
-        href="#produtos"
-        className="relative text-white font-semibold text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-purple-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
-        Diplomas
       </a>
     </div>
   );

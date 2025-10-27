@@ -10,7 +10,7 @@ const RoutesNavBar = () => {
     <div className="hidden md:flex items-center space-x-8">
       <div className="relative group ">
         <a
-          href="#institucional"
+          href="/sobre"
           className="relative text-black font-medium text-xl transition-colors 
 after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 
 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 

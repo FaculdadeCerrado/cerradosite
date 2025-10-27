@@ -8,24 +8,24 @@ const Navbar = () => {
       {/* Topbar */}
       <div className=" bg-black/20 backdrop-blur-sm h-8 flex items-center justify-start pl-[22%] px-6 space-x-6 text-sm ">
         <a
-          href="https://faccerrado.npjdigital.com.br"
+          href="/"
           className=" flex items-center text-white font-semibold gap-1 hover:text-gray-600">
           Site Cerrado
         </a>
         <a
-          href="https://www.unicollege.net/cerrado"
+          href="/sobre"
           className=" flex items-center text-white font-semibold gap-1 hover:text-gray-600">
-          aaaaaaaaaaaa
+          Institucional
         </a>
         <a
-          href="https://www.cerrado.eadmax.net/login/index.php"
+          href="/cursos"
           className=" flex items-center text-white font-semibold gap-1 hover:text-gray-600">
-          aaaaaaaaaaaa
+          Cursos
         </a>
         <a
-          href="https://www.unicollege.net/cerrado"
+          href="/comunicacao"
           className=" flex items-center text-white font-semibold gap-1 hover:text-gray-600">
-          aaaaaaaaaaaa
+          Comunicação
         </a>
       </div>
       <div className="relative flex items-center justify-center gap-12 px-8 py-2 mb-4 backdrop-blur-sm bg-black/20">

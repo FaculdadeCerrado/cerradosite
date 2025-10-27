@@ -11,7 +11,7 @@ import {
 const RecursosPrincipais = () => {
   const recursos = [
     {
-      icon: <Newspaper className="w-10 h-10 text-orange-500" />,
+      icon: <Newspaper className="w-10 h-10 text-green-500" />,
       title: "Periódicos Eletrônicos",
       description:
         "Acesse revistas científicas e publicações acadêmicas atualizadas",
@@ -30,7 +30,7 @@ const RecursosPrincipais = () => {
       highlight: false,
     },
     {
-      icon: <Archive className="w-10 h-10 text-orange-500" />,
+      icon: <Archive className="w-10 h-10 text-purple-500" />,
       title: "Repositório Institucional",
       description:
         "Acesse trabalhos acadêmicos, teses e dissertações da instituição",
@@ -39,7 +39,7 @@ const RecursosPrincipais = () => {
       highlight: true,
     },
     {
-      icon: <FileText className="w-10 h-10 text-orange-500" />,
+      icon: <FileText className="w-10 h-10 text-green-500" />,
       title: "Jornais Eletrônicos",
       description:
         "Consulte jornais nacionais e internacionais em formato digital",
@@ -56,7 +56,7 @@ const RecursosPrincipais = () => {
       highlight: false,
     },
     {
-      icon: <BookOpen className="w-10 h-10 text-orange-500" />,
+      icon: <BookOpen className="w-10 h-10 text-purple-500" />,
       title: "Bibliotecas Virtuais",
       description: "Links para bibliotecas digitais parceiras e conveniadas",
       button: "Acessar Bibliotecas",
@@ -77,7 +77,11 @@ const RecursosPrincipais = () => {
             key={index}
             className={`relative border rounded-2xl p-6 shadow-sm transition-all hover:shadow-md ${
               item.highlight ? "bg-gray-100" : "bg-white"
-            }`}>
+            }`}
+            style={{
+              boxShadow:
+                "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+            }}>
             {/* Ícone superior direito */}
             <ExternalLink className="absolute top-4 right-4 w-4 h-4 text-gray-500" />
 
