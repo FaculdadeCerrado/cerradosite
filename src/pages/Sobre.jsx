@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import Cerradodf from "../images/Institucional/Cerradodf.png";
 
 export default function FaculdadeCERRADO() {
   return (
@@ -7,7 +8,7 @@ export default function FaculdadeCERRADO() {
       <NavBar />
       <div className="min-h-screen bg-gray-50 text-gray-800 mx-auto px-6 py-10">
         {/* Seção: Histórico da Instituição */}
-        <section className="grid gap-8 md:grid-cols-3 md:items-center">
+        <section className="grid gap-8 md:grid-cols-3 md:items-start">
           <div className="md:col-span-2">
             <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">
               Histórico da Instituição
@@ -78,15 +79,15 @@ export default function FaculdadeCERRADO() {
 
           {/* Área da Foto */}
           <aside
-            className="bg-white border rounded-lg p-4 "
+            className="bg-white border rounded-lg p-4 items-atart "
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
             }}>
             <div className="flex flex-col items-center gap-4">
-              <div className="w-36 h-36 rounded-md bg-gray-100 overflow-hidden flex items-center justify-center">
+              <div className="w-full rounded-md bg-gray-100 overflow-hidden flex items-center justify-center">
                 <img
-                  src=""
+                  src={Cerradodf}
                   alt="Foto da instituição"
                   className="object-cover w-full h-full"
                 />
@@ -95,7 +96,7 @@ export default function FaculdadeCERRADO() {
               <div className="w-full text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Fundação</span>
-                  <strong>2010</strong>
+                  <strong>2017</strong>
                 </div>
                 <div className="flex justify-between mt-1">
                   <span className="text-gray-500">Tipo</span>
@@ -107,6 +108,30 @@ export default function FaculdadeCERRADO() {
                 </div>
               </div>
             </div>
+            {/*  <div className="flex flex-col items-center gap-4">
+              <div className="w-full rounded-md bg-gray-100 overflow-hidden flex items-center justify-center">
+                <img
+                  src={Cerradodf}
+                  alt="Foto da instituição"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+
+           <div className="w-full text-sm">
+                <div className="flex justify-between">
+                  <span className="text-gray-500">Fundação</span>
+                  <strong>2017</strong>
+                </div>
+                <div className="flex justify-between mt-1">
+                  <span className="text-gray-500">Tipo</span>
+                  <strong>Privada </strong>
+                </div>
+                <div className="flex justify-between mt-1">
+                  <span className="text-gray-500">Sede</span>
+                  <strong>Brasília - DF</strong>
+                </div>
+              </div> 
+            </div>*/}
           </aside>
         </section>
 
