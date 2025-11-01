@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import { videos } from "../../src/Data/VideoData";
 
 export default function Comunicacao() {
   const [active, setActive] = useState("noticias"); // 'noticias' | 'videos' | 'fotos' | 'eventos' | 'comunicados'
@@ -40,28 +41,6 @@ export default function Comunicacao() {
       description:
         "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices...",
       image: "/images/news3.jpg",
-    },
-  ];
-
-  // Dados de vídeos
-  const videos = [
-    {
-      id: 1,
-      title: "Aula Magna: Início do Semestre",
-      thumbnail: "https://img.youtube.com/vi/ysz5S6PUM-U/hqdefault.jpg",
-      embed: "https://www.youtube.com/embed/ysz5S6PUM-U",
-    },
-    {
-      id: 2,
-      title: "Palestra: Inovação no Ensino",
-      thumbnail: "https://img.youtube.com/vi/ScMzIvxBSi4/hqdefault.jpg",
-      embed: "https://www.youtube.com/embed/ScMzIvxBSi4",
-    },
-    {
-      id: 3,
-      title: "Entrevista com o Reitor",
-      thumbnail: "https://img.youtube.com/vi/3fumBcKC6RE/hqdefault.jpg",
-      embed: "https://www.youtube.com/embed/3fumBcKC6RE",
     },
   ];
 

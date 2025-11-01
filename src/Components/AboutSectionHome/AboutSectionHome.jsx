@@ -25,7 +25,7 @@ const AboutSectionHome = () => {
             habilidades práticas e teóricas para se destacar na sua carreira.
           </p>
           <a
-            href="/noticias"
+            href="/sobre"
             className="inline-flex items-center px-4 py-2 border-2 border-green-600 font-bold  rounded-md hover:bg-green-600 hover:text-white transition-colors duration-200 bg-transparent">
             SAIBA MAIS
             <svg
