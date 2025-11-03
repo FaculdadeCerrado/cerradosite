@@ -11,6 +11,8 @@ import PeriodicosEletronicos from "./pages/Biblioteca/PeriodicosEletronicos";
 import BaseDeDados from "./pages/Biblioteca/BasesDeDados";
 import RepositorioPaulo from "./pages/Biblioteca/RepositorioPaulo";
 import Sobre from "./pages/Sobre";
+import GerenciadorCursos from "./pages/Admins/GerenciadorCursos";
+import GerenciadorModulos from "./pages/Admins/GerenciadorModulos";
 
 function AppRoutes() {
   return (
@@ -29,6 +31,12 @@ function AppRoutes() {
         <Route path="/ouvidoria" element={<Ouvidoria />} />
         <Route path="/biblioteca" element={<HomeBiblioteca />} />
         <Route path="/jornais-eletronicos" element={<JornaisEletronicos />} />
+        <Route path="/gerenciador-cursos" element={<GerenciadorCursos />} />
+        <Route
+          path="/gerenciador-modulos/:cursoId"
+          element={<GerenciadorModulos />}
+        />
+
         <Route
           path="/periodicos-eletronicos"
           element={<PeriodicosEletronicos />}
