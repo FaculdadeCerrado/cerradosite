@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCursoCompleto } from "../service/cursoService";
+import NavBar from "../Components/NavBar/NavBar.jsx";
 
 export default function InfoCurso() {
   const { id } = useParams();
   const [curso, setCurso] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [tab, setTab] = useState("sobre");
+  const [openModulos, setOpenModulos] = useState({});
+  const [openMais, setOpenMais] = useState({});
 
   useEffect(() => {
     const load = async () => {
@@ -20,111 +24,167 @@ export default function InfoCurso() {
   if (!curso) return <p>Curso não encontrado.</p>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold">{curso.nome}</h1>
-      <p className="text-gray-600">{curso.tipo}</p>
+    <>
+      <NavBar />
+      <div className="w-full">
+        {/* BANNER */}
+        <div className="relative w-full h-64 md:h-80 lg:h-96">
+          <img
+            src={curso.foto}
+            alt="banner curso"
+            className="w-full h-full object-cover"
+          />
 
-      {/* FOTO */}
-      {curso.foto && (
-        <img
-          src={curso.foto}
-          className="w-full rounded-xl my-4"
-          alt="imagem do curso"
-        />
-      )}
+          <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white p-6">
+            <h1 className="text-4xl font-bold">{curso.nome}</h1>
+            <p className="text-lg mt-1">{curso.tipo}</p>
+          </div>
+        </div>
 
-      {/* OBJETIVO */}
-      {curso.objetivo && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Objetivo</h2>
-          <p>{curso.objetivo}</p>
-        </>
-      )}
+        <div className="flex gap-6 p-6">
+          {/* CONTEÚDO PRINCIPAL */}
+          <div className="flex-1">
+            {/* TABS */}
+            <div className="flex gap-3 border-b pb-2">
+              <button
+                className={`pb-2 ${
+                  tab === "sobre"
+                    ? "border-b-2 border-purple-600 font-semibold"
+                    : ""
+                }`}
+                onClick={() => setTab("sobre")}>
+                Sobre
+              </button>
+              <button
+                className={`pb-2 ${
+                  tab === "matriz"
+                    ? "border-b-2 border-purple-600 font-semibold"
+                    : ""
+                }`}
+                onClick={() => setTab("matriz")}>
+                Matriz Curricular
+              </button>
+            </div>
 
-      {/* NOTA MEC */}
-      {curso.nota_mec > 0 && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Nota MEC</h2>
-          <p>{curso.nota_mec}</p>
-        </>
-      )}
+            {/* CONTEÚDO: SOBRE */}
+            {tab === "sobre" && (
+              <div className="mt-4">
+                {curso.objetivo && (
+                  <>
+                    <h2 className="font-bold text-xl">Objetivo</h2>
+                    <p className="mt-2">{curso.objetivo}</p>
+                  </>
+                )}
 
-      {/* CPC */}
-      {curso.cpc > 0 && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">CPC</h2>
-          <p>{curso.cpc}</p>
-        </>
-      )}
+                {curso.sobre && (
+                  <>
+                    <h2 className="font-bold text-xl mt-6">Sobre o Curso</h2>
+                    <p className="mt-2">{curso.sobre}</p>
+                  </>
+                )}
 
-      {/* SOBRE */}
-      {curso.sobre && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Sobre o Curso</h2>
-          <p>{curso.sobre}</p>
-        </>
-      )}
+                {/* -------- MAIS INFORMAÇÕES -------- */}
+                <h2 className="font-bold text-2xl mt-10">
+                  Mais informações sobre o curso:
+                </h2>
 
-      {/* MERCADO */}
-      {curso.mercado && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Mercado</h2>
-          <p>{curso.mercado}</p>
-        </>
-      )}
+                {/* DIFERENCIAIS */}
+                {curso.diferenciais && (
+                  <div
+                    className="border p-4 rounded-lg mt-4 cursor-pointer"
+                    onClick={() =>
+                      setOpenMais({ ...openMais, dif: !openMais.dif })
+                    }>
+                    <p className="font-semibold">DIFERENCIAIS:</p>
+                    {openMais.dif && (
+                      <p className="mt-2">{curso.diferenciais}</p>
+                    )}
+                  </div>
+                )}
 
-      {/* DIFERENCIAIS */}
-      {curso.diferenciais && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Diferenciais</h2>
-          <p>{curso.diferenciais}</p>
-        </>
-      )}
+                {/* MERCADO */}
+                {curso.mercado && (
+                  <div
+                    className="border p-4 rounded-lg mt-4 cursor-pointer"
+                    onClick={() =>
+                      setOpenMais({ ...openMais, mercado: !openMais.mercado })
+                    }>
+                    <p className="font-semibold">MERCADO:</p>
+                    {openMais.mercado && (
+                      <p className="mt-2">{curso.mercado}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
 
-      {/* PRÉ REQUISITOS */}
-      {Array.isArray(curso.pre_requisitos) &&
-        curso.pre_requisitos.length > 0 && (
-          <>
-            <h2 className="font-semibold text-xl mt-4">Pré-requisitos</h2>
-            <ul className="list-disc ml-4">
-              {curso.pre_requisitos.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </>
-        )}
+            {/* CONTEÚDO: MATRIZ CURRICULAR */}
+            {tab === "matriz" && (
+              <div className="mt-4">
+                <h2 className="font-bold text-xl">Módulos</h2>
 
-      {/* TURNOS */}
-      {Array.isArray(curso.turnos) && curso.turnos.length > 0 && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Turnos</h2>
-          <p>{curso.turnos.join(", ")}</p>
-        </>
-      )}
+                {curso.modulos?.map((modulo, idx) => (
+                  <div key={idx} className="border rounded-lg p-4 mt-3">
+                    <div
+                      className="flex justify-between cursor-pointer"
+                      onClick={() =>
+                        setOpenModulos({
+                          ...openModulos,
+                          [idx]: !openModulos[idx],
+                        })
+                      }>
+                      <p className="font-semibold text-lg">{modulo.nome}</p>
+                      <span>{openModulos[idx] ? "▲" : "▼"}</span>
+                    </div>
 
-      {/* MÓDULOS */}
-      {Array.isArray(curso.modulos) && curso.modulos.length > 0 && (
-        <>
-          <h2 className="font-semibold text-xl mt-4">Módulos</h2>
+                    {openModulos[idx] && (
+                      <ul className="ml-4 mt-3 list-disc">
+                        {modulo.disciplinas?.map((d) => (
+                          <li key={d.id}>
+                            {d.nome}
+                            {d.carga_horaria && ` — ${d.carga_horaria}h`}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
 
-          {curso.modulos.map((modulo) => (
-            <div key={modulo.id} className="border p-4 rounded-lg mt-3">
-              <h3 className="font-semibold text-lg">{modulo.nome}</h3>
+          {/* ASIDE */}
+          <aside className="w-64 border-l pl-4 hidden md:block">
+            <h2 className="font-bold text-lg mb-3">Informações</h2>
 
-              {modulo.disciplinas?.length > 0 ? (
-                <ul className="ml-4 mt-2 list-disc">
-                  {modulo.disciplinas.map((disc) => (
-                    <li key={disc.id}>
-                      {disc.nome}
-                      {disc.carga_horaria && ` — ${disc.carga_horaria}h`}
-                    </li>
+            {curso.nota_mec > 0 && (
+              <p>
+                <strong>Nota MEC:</strong> {curso.nota_mec}
+              </p>
+            )}
+            {curso.cpc > 0 && (
+              <p>
+                <strong>CPC:</strong> {curso.cpc}
+              </p>
+            )}
+            {curso.pre_requisitos?.length > 0 && (
+              <>
+                <p className="font-semibold mt-4">Pré-requisitos:</p>
+                <ul className="list-disc ml-4">
+                  {curso.pre_requisitos.map((item, i) => (
+                    <li key={i}>{item}</li>
                   ))}
                 </ul>
-              ) : null}
-            </div>
-          ))}
-        </>
-      )}
-    </div>
+              </>
+            )}
+            {curso.turnos?.length > 0 && (
+              <p className="mt-4">
+                <strong>Turnos:</strong> {curso.turnos.join(", ")}
+              </p>
+            )}
+          </aside>
+        </div>
+      </div>
+    </>
   );
 }
