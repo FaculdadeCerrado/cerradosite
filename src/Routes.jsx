@@ -12,6 +12,7 @@ import BaseDeDados from "./pages/Biblioteca/BasesDeDados";
 import RepositorioPaulo from "./pages/Biblioteca/RepositorioPaulo";
 import Sobre from "./pages/Sobre";
 import Cursos from "./pages/Cursos";
+import InfoCursos from "./pages/InfoCursos";
 import GerenciadorCursos from "./pages/Admins/GerenciadorCursos";
 import GerenciadorModulos from "./pages/Admins/GerenciadorModulos";
 
@@ -22,7 +23,6 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/comunicacao" element={<Comunicacao />} />
-
         <Route
           path="/repositorio-academico"
           element={<RepositorioAcademico />}
@@ -37,8 +37,8 @@ function AppRoutes() {
         <Route
           path="/gerenciador-modulos/:cursoId"
           element={<GerenciadorModulos />}
-        />
-
+        />{" "}
+        <Route path="/info-curso/:id" element={<InfoCursos />} />
         <Route
           path="/periodicos-eletronicos"
           element={<PeriodicosEletronicos />}

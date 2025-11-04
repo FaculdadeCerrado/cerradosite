@@ -20,6 +20,7 @@ export const createCurso = async (curso) => {
     pre_requisitos: Array.isArray(curso.pre_requisitos)
       ? curso.pre_requisitos
       : [curso.pre_requisitos],
+    turnos: curso.turnos || [],
   };
 
   return axios.post(`${API_URL}cursos/create.php`, payload, {
@@ -28,9 +29,15 @@ export const createCurso = async (curso) => {
 };
 
 export const updateCurso = async (curso) => {
-  const res = await axios.post(`${API_URL}cursos/update.php`, curso, {
+  const payload = {
+    ...curso,
+    turnos: curso.turnos || [],
+  };
+
+  const res = await axios.post(`${API_URL}cursos/update.php`, payload, {
     headers: { "Content-Type": "application/json" },
   });
+
   return res.data;
 };
 
@@ -41,4 +48,17 @@ export const deleteCurso = async (id) => {
     { headers: { "Content-Type": "application/json" } }
   );
   return res.data;
+};
+
+export const getCursoCompleto = async (id) => {
+  try {
+    const res = await axios.get(`${API_URL}cursos/readOne.php`, {
+      params: { id },
+      headers: { "Content-Type": "application/json" },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("Erro ao buscar curso completo:", error);
+    return null;
+  }
 };
