@@ -1,13 +1,11 @@
 import axios from "axios";
+import ConfigService from "./configService";
 
-// URL base da sua API
-// const API_URL = "https://api.faculdadecerrado.edu.br/cursos";
-
-const API_URL = "http://localhost:8000/cursos";
+const { API_URL } = ConfigService;
 
 export const getCursos = async () => {
   try {
-    const res = await axios.get(`${API_URL}/read.php`);
+    const res = await axios.get(`${API_URL}cursos/read.php`);
     // O backend retorna um array direto
     return res.data || [];
   } catch (error) {
@@ -24,13 +22,13 @@ export const createCurso = async (curso) => {
       : [curso.pre_requisitos],
   };
 
-  return axios.post(`${API_URL}/create.php`, payload, {
+  return axios.post(`${API_URL}cursos/create.php`, payload, {
     headers: { "Content-Type": "application/json" },
   });
 };
 
 export const updateCurso = async (curso) => {
-  const res = await axios.post(`${API_URL}/update.php`, curso, {
+  const res = await axios.post(`${API_URL}cursos/update.php`, curso, {
     headers: { "Content-Type": "application/json" },
   });
   return res.data;
@@ -38,7 +36,7 @@ export const updateCurso = async (curso) => {
 
 export const deleteCurso = async (id) => {
   const res = await axios.post(
-    `${API_URL}/delete.php`,
+    `${API_URL}cursos/delete.php`,
     { id },
     { headers: { "Content-Type": "application/json" } }
   );

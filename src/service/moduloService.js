@@ -1,11 +1,12 @@
 import axios from "axios";
+import ConfigService from "./configService";
 
-const API_URL = "http://localhost:8000/modulos-disciplinas";
+const { API_URL } = ConfigService;
 
-// ✅ Buscar módulos de um curso
+//  Buscar módulos de um curso
 export const getModulos = async (curso_id) => {
   try {
-    const res = await axios.get(`${API_URL}/read.php`, {
+    const res = await axios.get(`${API_URL}modulos-disciplinas/read.php`, {
       params: { curso_id },
     });
     return res.data || [];
@@ -15,11 +16,14 @@ export const getModulos = async (curso_id) => {
   }
 };
 
-// ✅ Criar um módulo com disciplinas
+//  Criar um módulo com disciplinas
 export const createModulo = async (curso_id, modulo) => {
   try {
     const payload = { curso_id, ...modulo };
-    const res = await axios.post(`${API_URL}/create.php`, payload);
+    const res = await axios.post(
+      `${API_URL}modulos-disciplinas/create.php`,
+      payload
+    );
     return res.data;
   } catch (error) {
     console.error("Erro ao criar módulo:", error);
@@ -27,11 +31,14 @@ export const createModulo = async (curso_id, modulo) => {
   }
 };
 
-// ✅ Atualizar módulo e disciplinas
+//  Atualizar módulo e disciplinas
 export const updateModulo = async (modulo_id, modulo) => {
   try {
     const payload = { id: modulo_id, ...modulo };
-    const res = await axios.post(`${API_URL}/update.php`, payload);
+    const res = await axios.post(
+      `${API_URL}modulos-disciplinas/update.php`,
+      payload
+    );
     return res.data;
   } catch (error) {
     console.error("Erro ao atualizar módulo:", error);
@@ -39,10 +46,12 @@ export const updateModulo = async (modulo_id, modulo) => {
   }
 };
 
-// ✅ Deletar módulo (e suas disciplinas)
+//  Deletar módulo (e suas disciplinas)
 export const deleteModulo = async (modulo_id) => {
   try {
-    const res = await axios.post(`${API_URL}/delete.php`, { id: modulo_id });
+    const res = await axios.post(`${API_URL}modulos-disciplinas/delete.php`, {
+      id: modulo_id,
+    });
     return res.data;
   } catch (error) {
     console.error("Erro ao deletar módulo:", error);
