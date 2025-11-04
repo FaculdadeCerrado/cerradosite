@@ -20,7 +20,7 @@ export const createCurso = async (curso) => {
     pre_requisitos: Array.isArray(curso.pre_requisitos)
       ? curso.pre_requisitos
       : [curso.pre_requisitos],
-    turnos: curso.turnos || [],
+    turnos: Array.isArray(curso.turnos) ? curso.turnos : [curso.turnos],
   };
 
   return axios.post(`${API_URL}cursos/create.php`, payload, {

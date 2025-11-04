@@ -20,6 +20,7 @@ export default function Cursos() {
     foto: "",
     objetivo: "",
     pre_requisitos: [],
+    turnos: [],
     metodologia: "",
     estagio_supervisionado: 0,
     carga_horaria_estagio: 0,
@@ -83,6 +84,7 @@ export default function Cursos() {
       foto: "",
       objetivo: "",
       pre_requisitos: [],
+      turnos: [],
       metodologia: "",
       estagio_supervisionado: 0,
       carga_horaria_estagio: 0,
@@ -96,6 +98,9 @@ export default function Cursos() {
       pre_requisitos: Array.isArray(curso.pre_requisitos)
         ? curso.pre_requisitos
         : JSON.parse(curso.pre_requisitos || "[]"),
+      turnos: Array.isArray(curso.turnos)
+        ? curso.turnos
+        : JSON.parse(curso.turnos || "[]"),
     });
     setIsEditing(true);
   };
@@ -118,6 +123,22 @@ export default function Cursos() {
       });
       setPreRequisitosInput("");
     }
+  };
+  const [TurnosInput, setTurnosInput] = useState("");
+
+  const addTurnos = () => {
+    if (TurnosInput.trim() !== "") {
+      setForm({
+        ...form,
+        turnos: [...form.turnos, TurnosInput.trim()],
+      });
+      setTurnosInput("");
+    }
+  };
+
+  const removeTurnos = (index) => {
+    const newList = form.turnos.filter((_, i) => i !== index);
+    setForm({ ...form, turnos: newList });
   };
 
   // função para remover
@@ -197,6 +218,38 @@ export default function Cursos() {
                   <button
                     type="button"
                     onClick={() => removePreRequisito(index)}
+                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                    X
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <label className="font-bold">Turnos:</label>
+            <div className="flex gap-2 mb-2">
+              <input
+                value={TurnosInput}
+                onChange={(e) => setTurnosInput(e.target.value)}
+                placeholder="Digite um pré-requisito"
+                className="border p-2 rounded flex-1"
+              />
+              <button
+                type="button"
+                onClick={addTurnos}
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                Adicionar
+              </button>
+            </div>
+            <ul className="mb-2">
+              {form.turnos.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex justify-between items-center gap-2 border p-2 rounded mb-1">
+                  {item}
+                  <button
+                    type="button"
+                    onClick={() => removeTurnos(index)}
                     className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
                     X
                   </button>
