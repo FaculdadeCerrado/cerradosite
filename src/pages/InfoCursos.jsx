@@ -24,10 +24,16 @@ export default function InfoCurso() {
       <h1 className="text-3xl font-bold">{curso.nome}</h1>
       <p className="text-gray-600">{curso.tipo}</p>
 
+      {/* FOTO */}
       {curso.foto && (
-        <img src={curso.foto} className="w-full rounded-xl my-4" />
+        <img
+          src={curso.foto}
+          className="w-full rounded-xl my-4"
+          alt="imagem do curso"
+        />
       )}
 
+      {/* OBJETIVO */}
       {curso.objetivo && (
         <>
           <h2 className="font-semibold text-xl mt-4">Objetivo</h2>
@@ -35,39 +41,89 @@ export default function InfoCurso() {
         </>
       )}
 
-      <h2 className="font-semibold text-xl mt-4">Pré-requisitos</h2>
-      <ul className="list-disc ml-4">
-        {curso.pre_requisitos?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
-      </ul>
+      {/* NOTA MEC */}
+      {curso.nota_mec > 0 && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">Nota MEC</h2>
+          <p>{curso.nota_mec}</p>
+        </>
+      )}
 
-      <h2 className="font-semibold text-xl mt-4">Turnos</h2>
-      <p>{curso.turnos?.length > 0 ? curso.turnos.join(", ") : "Sem turnos"}</p>
+      {/* CPC */}
+      {curso.cpc > 0 && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">CPC</h2>
+          <p>{curso.cpc}</p>
+        </>
+      )}
 
-      <h2 className="font-semibold text-xl mt-4">Módulos</h2>
+      {/* SOBRE */}
+      {curso.sobre && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">Sobre o Curso</h2>
+          <p>{curso.sobre}</p>
+        </>
+      )}
 
-      {curso.modulos?.length > 0 ? (
-        curso.modulos.map((modulo) => (
-          <div key={modulo.id} className="border p-4 rounded-lg mt-3">
-            <h3 className="font-semibold text-lg">{modulo.nome}</h3>
+      {/* MERCADO */}
+      {curso.mercado && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">Mercado</h2>
+          <p>{curso.mercado}</p>
+        </>
+      )}
 
-            {modulo.disciplinas?.length > 0 ? (
-              <ul className="ml-4 mt-2 list-disc">
-                {modulo.disciplinas.map((disc) => (
-                  <li key={disc.id}>
-                    {disc.nome}
-                    {disc.carga_horaria && ` — ${disc.carga_horaria}h`}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>Nenhuma disciplina cadastrada.</p>
-            )}
-          </div>
-        ))
-      ) : (
-        <p>Nenhum módulo cadastrado.</p>
+      {/* DIFERENCIAIS */}
+      {curso.diferenciais && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">Diferenciais</h2>
+          <p>{curso.diferenciais}</p>
+        </>
+      )}
+
+      {/* PRÉ REQUISITOS */}
+      {Array.isArray(curso.pre_requisitos) &&
+        curso.pre_requisitos.length > 0 && (
+          <>
+            <h2 className="font-semibold text-xl mt-4">Pré-requisitos</h2>
+            <ul className="list-disc ml-4">
+              {curso.pre_requisitos.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
+
+      {/* TURNOS */}
+      {Array.isArray(curso.turnos) && curso.turnos.length > 0 && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">Turnos</h2>
+          <p>{curso.turnos.join(", ")}</p>
+        </>
+      )}
+
+      {/* MÓDULOS */}
+      {Array.isArray(curso.modulos) && curso.modulos.length > 0 && (
+        <>
+          <h2 className="font-semibold text-xl mt-4">Módulos</h2>
+
+          {curso.modulos.map((modulo) => (
+            <div key={modulo.id} className="border p-4 rounded-lg mt-3">
+              <h3 className="font-semibold text-lg">{modulo.nome}</h3>
+
+              {modulo.disciplinas?.length > 0 ? (
+                <ul className="ml-4 mt-2 list-disc">
+                  {modulo.disciplinas.map((disc) => (
+                    <li key={disc.id}>
+                      {disc.nome}
+                      {disc.carga_horaria && ` — ${disc.carga_horaria}h`}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
+          ))}
+        </>
       )}
     </div>
   );

@@ -12,6 +12,7 @@ import {
 export default function Cursos() {
   const [openMenu, setOpenMenu] = useState({});
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
     id: "",
     nome: "",
@@ -24,33 +25,30 @@ export default function Cursos() {
     metodologia: "",
     estagio_supervisionado: 0,
     carga_horaria_estagio: 0,
+
+    // ✅ novos campos
+    nota_mec: 0,
+    sobre: "",
+    mercado: "",
+    diferenciais: "",
+    cpc: 0,
   });
+
   const [isEditing, setIsEditing] = useState(false);
+  const [cursos, setCursos] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect chamado");
     loadCursos();
   }, []);
 
   const loadCursos = async () => {
     try {
-      const data = await getCursos(); // axios já devolve array
-      console.log("Cursos recebidos:", data);
+      const data = await getCursos();
       setCursos(data);
     } catch (error) {
       console.error("Erro ao carregar cursos:", error);
     }
   };
-
-  const [cursos, setCursos] = useState([]);
-
-  useEffect(() => {
-    const fetchCursos = async () => {
-      const data = await getCursos();
-      setCursos(data);
-    };
-    fetchCursos();
-  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -88,7 +86,14 @@ export default function Cursos() {
       metodologia: "",
       estagio_supervisionado: 0,
       carga_horaria_estagio: 0,
+
+      nota_mec: 0,
+      sobre: "",
+      mercado: "",
+      diferenciais: "",
+      cpc: 0,
     });
+
     setIsEditing(false);
   };
 
@@ -112,9 +117,8 @@ export default function Cursos() {
     }
   };
 
-  // função para adicionar pré-requisito
+  // pré-requisitos
   const [preRequisitosInput, setPreRequisitosInput] = useState("");
-
   const addPreRequisito = () => {
     if (preRequisitosInput.trim() !== "") {
       setForm({
@@ -124,8 +128,15 @@ export default function Cursos() {
       setPreRequisitosInput("");
     }
   };
-  const [TurnosInput, setTurnosInput] = useState("");
+  const removePreRequisito = (index) => {
+    setForm({
+      ...form,
+      pre_requisitos: form.pre_requisitos.filter((_, i) => i !== index),
+    });
+  };
 
+  // turnos
+  const [TurnosInput, setTurnosInput] = useState("");
   const addTurnos = () => {
     if (TurnosInput.trim() !== "") {
       setForm({
@@ -135,25 +146,21 @@ export default function Cursos() {
       setTurnosInput("");
     }
   };
-
   const removeTurnos = (index) => {
-    const newList = form.turnos.filter((_, i) => i !== index);
-    setForm({ ...form, turnos: newList });
-  };
-
-  // função para remover
-  const removePreRequisito = (index) => {
-    const newList = form.pre_requisitos.filter((_, i) => i !== index);
-    setForm({ ...form, pre_requisitos: newList });
+    setForm({
+      ...form,
+      turnos: form.turnos.filter((_, i) => i !== index),
+    });
   };
 
   return (
     <>
       <NavBar />
-      <div className="p-6">
-        <h1 className="text-2xl font-bold mb-4"> Gerenciamento de Cursos</h1>
 
-        {/* Formulário */}
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-4">Gerenciamento de Cursos</h1>
+
+        {/* FORM */}
         <form
           onSubmit={handleSubmit}
           className="bg-white p-4 rounded-xl shadow mb-6 grid gap-3">
@@ -165,13 +172,15 @@ export default function Cursos() {
             className="border p-2 rounded"
             required
           />
+
           <input
             name="tipo"
             value={form.tipo}
             onChange={handleChange}
-            placeholder="Tipo (ex: Técnico, Livre...)"
+            placeholder="Tipo"
             className="border p-2 rounded"
           />
+
           <input
             name="duracao"
             value={form.duracao}
@@ -179,13 +188,15 @@ export default function Cursos() {
             placeholder="Duração"
             className="border p-2 rounded"
           />
+
           <input
             name="foto"
             value={form.foto}
             onChange={handleChange}
-            placeholder="URL da foto"
+            placeholder="URL Foto"
             className="border p-2 rounded"
           />
+
           <textarea
             name="objetivo"
             value={form.objetivo}
@@ -193,64 +204,113 @@ export default function Cursos() {
             placeholder="Objetivo"
             className="border p-2 rounded"
           />
+
+          <p>nota mec</p>
+          <input
+            type="number"
+            name="nota_mec"
+            value={form.nota_mec}
+            onChange={handleChange}
+            placeholder="Nota MEC"
+            className="border p-2 rounded"
+          />
+          <p>cpc</p>
+          <input
+            type="number"
+            name="cpc"
+            value={form.cpc}
+            onChange={handleChange}
+            placeholder="CPC"
+            className="border p-2 rounded"
+          />
+
+          <textarea
+            name="sobre"
+            value={form.sobre}
+            onChange={handleChange}
+            placeholder="Sobre o curso"
+            className="border p-2 rounded"
+          />
+
+          <textarea
+            name="mercado"
+            value={form.mercado}
+            onChange={handleChange}
+            placeholder="Mercado de trabalho"
+            className="border p-2 rounded"
+          />
+
+          <textarea
+            name="diferenciais"
+            value={form.diferenciais}
+            onChange={handleChange}
+            placeholder="Diferenciais"
+            className="border p-2 rounded"
+          />
+
+          {/* PRÉ-REQUISITOS */}
           <div>
             <label className="font-bold">Pré-requisitos:</label>
             <div className="flex gap-2 mb-2">
               <input
                 value={preRequisitosInput}
                 onChange={(e) => setPreRequisitosInput(e.target.value)}
-                placeholder="Digite um pré-requisito"
+                placeholder="Digite"
                 className="border p-2 rounded flex-1"
               />
               <button
                 type="button"
                 onClick={addPreRequisito}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                className="bg-green-600 text-white px-4 py-2 rounded">
                 Adicionar
               </button>
             </div>
-            <ul className="mb-2">
+
+            <ul>
               {form.pre_requisitos.map((item, index) => (
                 <li
                   key={index}
-                  className="flex justify-between items-center gap-2 border p-2 rounded mb-1">
+                  className="flex justify-between border p-2 rounded mb-1">
                   {item}
                   <button
                     type="button"
                     onClick={() => removePreRequisito(index)}
-                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                    className="bg-red-500 text-white px-2 rounded">
                     X
                   </button>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* TURNOS */}
           <div>
             <label className="font-bold">Turnos:</label>
             <div className="flex gap-2 mb-2">
               <input
                 value={TurnosInput}
                 onChange={(e) => setTurnosInput(e.target.value)}
-                placeholder="Digite um pré-requisito"
+                placeholder="Digite um turno"
                 className="border p-2 rounded flex-1"
               />
               <button
                 type="button"
                 onClick={addTurnos}
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                className="bg-green-600 text-white px-4 py-2 rounded">
                 Adicionar
               </button>
             </div>
-            <ul className="mb-2">
+
+            <ul>
               {form.turnos.map((item, index) => (
                 <li
                   key={index}
-                  className="flex justify-between items-center gap-2 border p-2 rounded mb-1">
+                  className="flex justify-between border p-2 rounded mb-1">
                   {item}
                   <button
                     type="button"
                     onClick={() => removeTurnos(index)}
-                    className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                    className="bg-red-500 text-white px-2 rounded">
                     X
                   </button>
                 </li>
@@ -265,6 +325,7 @@ export default function Cursos() {
             placeholder="Metodologia"
             className="border p-2 rounded"
           />
+
           <label className="flex items-center gap-2">
             <input
               type="checkbox"
@@ -274,9 +335,10 @@ export default function Cursos() {
             />
             Possui estágio supervisionado
           </label>
+
           <input
-            name="carga_horaria_estagio"
             type="number"
+            name="carga_horaria_estagio"
             value={form.carga_horaria_estagio}
             onChange={handleChange}
             placeholder="Carga horária do estágio"
@@ -286,19 +348,22 @@ export default function Cursos() {
           <div className="flex gap-2">
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+              className="bg-blue-600 text-white px-4 py-2 rounded">
               {isEditing ? "Salvar alterações" : "Criar curso"}
             </button>
+
             {isEditing && (
               <button
                 type="button"
                 onClick={resetForm}
-                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">
+                className="bg-gray-400 text-white px-4 py-2 rounded">
                 Cancelar
               </button>
             )}
           </div>
         </form>
+
+        {/* LISTAGEM */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
           {cursos.map((curso) => (
             <div key={curso.id} className="border p-4 rounded shadow relative">
@@ -311,42 +376,41 @@ export default function Cursos() {
               <p>Tipo: {curso.tipo}</p>
               <p>Duração: {curso.duracao}</p>
 
-              {/* Botão de ações */}
               <div className="absolute top-2 right-2">
-                <div className="relative inline-block text-left">
-                  <button
-                    className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded"
-                    onClick={() =>
-                      setOpenMenu((prev) => ({
-                        ...prev,
-                        [curso.id]: !prev[curso.id],
-                      }))
-                    }>
-                    ⋮
-                  </button>
+                <button
+                  className="bg-gray-200 hover:bg-gray-300 px-2 py-1 rounded"
+                  onClick={() =>
+                    setOpenMenu((prev) => ({
+                      ...prev,
+                      [curso.id]: !prev[curso.id],
+                    }))
+                  }>
+                  ⋮
+                </button>
 
-                  {openMenu[curso.id] && (
-                    <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow z-10">
-                      <button
-                        className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                        onClick={() =>
-                          navigate(`/gerenciador-modulos/${curso.id}`)
-                        }>
-                        Módulos
-                      </button>
-                      <button
-                        className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                        onClick={() => handleEdit(curso)}>
-                        Editar
-                      </button>
-                      <button
-                        className="block w-full text-left px-4 py-2 hover:bg-red-100 text-red-600"
-                        onClick={() => handleDelete(curso.id)}>
-                        Excluir
-                      </button>
-                    </div>
-                  )}
-                </div>
+                {openMenu[curso.id] && (
+                  <div className="absolute right-0 mt-2 w-36 bg-white border rounded shadow z-10">
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                      onClick={() =>
+                        navigate(`/gerenciador-modulos/${curso.id}`)
+                      }>
+                      Módulos
+                    </button>
+
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                      onClick={() => handleEdit(curso)}>
+                      Editar
+                    </button>
+
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-red-100 text-red-600"
+                      onClick={() => handleDelete(curso.id)}>
+                      Excluir
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           ))}
