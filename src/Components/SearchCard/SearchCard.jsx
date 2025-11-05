@@ -29,7 +29,7 @@ const categoryIcons = {
 };
 
 const texts = [
-  //   "Digite o nome do curso...",
+  "Digite o nome do curso...",
   "Graduação em Psicologia",
   "Graduação em Direito",
   "Graduação em Pedagogia ",

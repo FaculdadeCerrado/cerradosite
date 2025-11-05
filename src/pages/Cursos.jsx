@@ -14,8 +14,12 @@ export default function Cursos() {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const navigate = useNavigate();
-
-  const texts = ["Direito", "Secretariado", "Gestão Pública", "Psicologia"];
+  const texts = [
+    "Digite o nome do curso...",
+    "Graduação em Psicologia",
+    "Graduação em Direito",
+    "Graduação em Pedagogia ",
+  ];
 
   const courseCategories = [
     { value: "todos", label: "Todos" },
