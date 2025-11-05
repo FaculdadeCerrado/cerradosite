@@ -16,3 +16,9 @@ const Logo = () => {
 };
 
 export default Logo;
+{
+  /* DESENVOLVIDO POR JOÃO GABRIEL SOUTO 
+     -https://www.linkedin.com/in/gabrielsouto01
+     -https://github.com/soutozk
+     -https://www.instagram.com/soutozk/ */
+}

@@ -5,6 +5,7 @@ import { CalendarDays, Clock, Info, ArrowRight, Search } from "lucide-react";
 import { getCursos } from "../service/cursoService";
 import { TypeWriter } from "../Components/TypeWriter/TypeWriter";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Cursos() {
   const [cursos, setCursos] = useState([]);
@@ -25,7 +26,7 @@ export default function Cursos() {
     { value: "todos", label: "Todos" },
     { value: "bacharelado", label: "Bacharelado" },
     { value: "licenciatura", label: "Licenciatura" },
-    { value: "tecnólogo", label: "Tecnólogo" },
+    { value: "Tecnológico", label: "Tecnológico" },
   ];
 
   // Helper: capitaliza a primeira letra
@@ -138,6 +139,21 @@ export default function Cursos() {
     filterCursos(searchTerm, selectedCategory);
   }, [searchTerm, selectedCategory, cursos]);
 
+  // === Animação Framer Motion ===
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1, // efeito em cascata
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    }),
+    exit: { opacity: 0, y: 20, transition: { duration: 0.3 } },
+  };
+
   return (
     <>
       <NavBar />
@@ -240,70 +256,84 @@ export default function Cursos() {
           )}
         </div>
 
-        {/* --- Grid de Cursos --- */}
-        {filteredCursos.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-            {filteredCursos.map((curso) => (
-              <div
-                key={curso.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition relative">
-                <span className="absolute top-3 right-3 bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                  {curso.tipo}
-                </span>
+        {/* --- Grid de Cursos com animação --- */}
+        <AnimatePresence>
+          {filteredCursos.length > 0 ? (
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4"
+              initial="hidden"
+              animate="visible"
+              exit="exit">
+              {filteredCursos.map((curso, i) => (
+                <motion.div
+                  key={curso.id}
+                  custom={i}
+                  variants={cardVariants}
+                  className="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition relative">
+                  <span className="absolute top-3 right-3 bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    {curso.tipo}
+                  </span>
 
-                <img
-                  src={curso.foto}
-                  alt={curso.nome}
-                  className="w-full h-48 object-cover"
-                />
+                  <img
+                    src={curso.foto}
+                    alt={curso.nome}
+                    className="w-full h-48 object-cover"
+                  />
 
-                <h2 className="text-xl font-semibold px-4 py-2">
-                  {curso.nome}
-                </h2>
+                  <h2 className="text-xl font-semibold px-4 py-2">
+                    {curso.nome}
+                  </h2>
 
-                <div className="bg-gray-50 border-t px-4 py-4">
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="flex flex-col">
-                      <span className="flex gap-2 items-center font-semibold text-orange-500">
-                        <CalendarDays size={18} /> Duração
-                      </span>
-                      <span>{curso.duracao || "—"}</span>
+                  <div className="bg-gray-50 border-t px-4 py-4">
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="flex flex-col">
+                        <span className="flex gap-2 items-center font-semibold text-orange-500">
+                          <CalendarDays size={18} /> Duração
+                        </span>
+                        <span>{curso.duracao || "—"}</span>
+                      </div>
+
+                      <div className="flex flex-col">
+                        <span className="flex gap-2 items-center font-semibold text-orange-500">
+                          <Clock size={18} /> Turnos
+                        </span>
+                        <span>{formatTurnos(curso.turnos)}</span>
+                      </div>
                     </div>
 
-                    <div className="flex flex-col">
-                      <span className="flex gap-2 items-center font-semibold text-orange-500">
-                        <Clock size={18} /> Turnos
-                      </span>
-                      <span>{formatTurnos(curso.turnos)}</span>
+                    <div className="flex gap-2 mt-4">
+                      <button
+                        className="flex-1 border border-purple-500 text-purple-600 font-medium py-2 rounded-full hover:bg-purple-100 transition flex items-center justify-center gap-2"
+                        onClick={() => navigate(`/info-curso/${curso.id}`)}>
+                        <Info size={18} />
+                        Sobre o Curso
+                      </button>
+
+                      <button className="flex-1 bg-green-600 text-white font-medium py-2 rounded-full hover:bg-green-700 transition flex items-center justify-center gap-2">
+                        Tenho Interesse
+                        <ArrowRight size={18} />
+                      </button>
                     </div>
                   </div>
-
-                  <div className="flex gap-2 mt-4">
-                    <button
-                      className="flex-1 border border-purple-500 text-purple-600 font-medium py-2 rounded-full hover:bg-purple-100 transition flex items-center justify-center gap-2"
-                      onClick={() => navigate(`/info-curso/${curso.id}`)}>
-                      <Info size={18} />
-                      Sobre o Curso
-                    </button>
-
-                    <button className="flex-1 bg-green-600 text-white font-medium py-2 rounded-full hover:bg-green-700 transition flex items-center justify-center gap-2">
-                      Tenho Interesse
-                      <ArrowRight size={18} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          !noResults && (
-            <p className="text-center text-gray-500 mt-10">
-              Carregando cursos...
-            </p>
-          )
-        )}
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            !noResults && (
+              <p className="text-center text-gray-500 mt-10">
+                Carregando cursos...
+              </p>
+            )
+          )}
+        </AnimatePresence>
       </div>
       <WhatsAppWidget />
     </>
   );
+}
+{
+  /* DESENVOLVIDO POR JOÃO GABRIEL SOUTO 
+     -https://www.linkedin.com/in/gabrielsouto01
+     -https://github.com/soutozk
+     -https://www.instagram.com/soutozk/ */
 }
