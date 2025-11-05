@@ -26,7 +26,7 @@ export default function Cursos() {
     { value: "todos", label: "Todos" },
     { value: "bacharelado", label: "Bacharelado" },
     { value: "licenciatura", label: "Licenciatura" },
-    { value: "Tecnológico", label: "Tecnológico" },
+    { value: "tecnológico", label: "Tecnológico" },
   ];
 
   // Helper: capitaliza a primeira letra
@@ -121,18 +121,21 @@ export default function Cursos() {
   };
 
   // === FILTRAGEM ===
-  const filterCursos = (term, category) => {
-    const termo = term.toLowerCase();
+  const filterCursos = (term = "", category = "todos") => {
+    const termo = term.toLowerCase().trim();
+
     const results = cursos.filter((curso) => {
-      const nomeMatch = curso.nome?.toLowerCase?.().includes(termo);
-      const categoriaMatch =
-        category === "todos" ||
-        (curso.tipo && curso.tipo.toLowerCase() === category.toLowerCase());
+      const nome = curso.nome?.toLowerCase?.() || "";
+      const tipo = curso.tipo?.toLowerCase?.() || "";
+
+      const nomeMatch = nome.includes(termo);
+      const categoriaMatch = category === "todos" || tipo === category;
+
       return nomeMatch && categoriaMatch;
     });
 
     setFilteredCursos(results);
-    setNoResults(results.length === 0);
+    setNoResults(results.length === 0 && !!termo);
   };
 
   useEffect(() => {
@@ -260,14 +263,16 @@ export default function Cursos() {
         <AnimatePresence>
           {filteredCursos.length > 0 ? (
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4"
-              initial="hidden"
-              animate="visible"
-              exit="exit">
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
               {filteredCursos.map((curso, i) => (
                 <motion.div
                   key={curso.id}
                   custom={i}
+                  layout
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
                   variants={cardVariants}
                   className="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-lg transition relative">
                   <span className="absolute top-3 right-3 bg-purple-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
