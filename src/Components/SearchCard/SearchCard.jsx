@@ -9,12 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { TypeWriter } from "../TypeWriter/TypeWriter";
 
-const courseData = {
-  graduacao: ["Administração"],
-  "pos-graduacao": ["MBA em Gestão"],
-  "curso-horas-complementares": [],
-  "cursos-tecnicos": ["Técnico em Informática"],
-};
+const courseData = ["Direito", "Secretariado", "Gestão Pública", "Psicologia"];
 
 const courseCategories = [
   { value: "graduacao", label: "Graduação" },

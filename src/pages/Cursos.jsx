@@ -4,6 +4,7 @@ import NavBar from "../Components/NavBar/NavBar.jsx";
 import { CalendarDays, Clock, Info, ArrowRight, Search } from "lucide-react";
 import { getCursos } from "../service/cursoService";
 import { TypeWriter } from "../Components/TypeWriter/TypeWriter";
+import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 
 export default function Cursos() {
   const [cursos, setCursos] = useState([]);
@@ -14,12 +15,7 @@ export default function Cursos() {
   const [noResults, setNoResults] = useState(false);
   const navigate = useNavigate();
 
-  const texts = [
-    "Ciência da Computação",
-    "Administração",
-    "Engenharia Civil",
-    "Licenciatura em Matemática",
-  ];
+  const texts = ["Direito", "Secretariado", "Gestão Pública", "Psicologia"];
 
   const courseCategories = [
     { value: "todos", label: "Todos" },
@@ -303,6 +299,7 @@ export default function Cursos() {
           )
         )}
       </div>
+      <WhatsAppWidget />
     </>
   );
 }
