@@ -43,11 +43,13 @@ const Navbar = () => {
         }}>
         {/* Logo */}
         <div className="flex items-center space-x-3">
-          <img
-            src={logo}
-            alt="Faculdade Cerrado"
-            className="h-16 w-auto object-contain" // <-- logo maior
-          />
+          <a href="/">
+            <img
+              src={logo}
+              alt="Faculdade Cerrado"
+              className="h-16 w-auto object-contain" // <-- logo maior
+            />
+          </a>
         </div>
 
         {/* Links de navegação */}
