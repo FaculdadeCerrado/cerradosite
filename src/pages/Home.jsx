@@ -7,6 +7,7 @@ import NewsSection from "../Components/NewsSection/NewsSections";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 import AboutSectionHome from "../Components/AboutSectionHome/AboutSectionHome";
 import SectionSociais from "../Components/SectionSociais/SectionSociais";
+import ComunicadosModal from "../Components/ComunicadosModal/ComunicadosModal.jsx";
 import { HomeBanners } from "../Data/BannerData.js";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <NavBar />
       <Banner images={HomeBanners} />
       {/* <TourVirtual /> */}
+      <ComunicadosModal />
       <SearchCard />
       <NewsSection />
       <SectionSociais />
