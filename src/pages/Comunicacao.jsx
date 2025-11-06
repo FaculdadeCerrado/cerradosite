@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import { videos } from "../../src/Data/VideoData";
 import { getNoticias } from "../service/noticiaService";
+import { getComunicados } from "../service/comunicadosService";
 import { useNavigate } from "react-router-dom";
 
 export default function Comunicacao() {
@@ -12,6 +13,7 @@ export default function Comunicacao() {
   const navigate = useNavigate();
 
   const [newsData, setNewsData] = useState([]);
+  const [comunicadosData, setComunicadosData] = useState([]);
 
   useEffect(() => {
     if (location.state?.categoria) {
@@ -25,6 +27,14 @@ export default function Comunicacao() {
       setNewsData(data);
     }
     loadNoticias();
+  }, []);
+
+  useEffect(() => {
+    async function loadComunicados() {
+      const data = await getComunicados();
+      setComunicadosData(data);
+    }
+    loadComunicados();
   }, []);
 
   // Dados de fotos
@@ -50,22 +60,6 @@ export default function Comunicacao() {
       title: "Semana Cultural",
       date: "25 de Outubro de 2025",
       description: "Diversas atividades culturais e artísticas.",
-    },
-  ];
-
-  // Dados de comunicados
-  const comunicados = [
-    {
-      id: 1,
-      title: "Atenção: Mudança no horário das aulas",
-      date: "15 de Outubro de 2025",
-      description: "As aulas de terça-feira passarão a começar às 8h30.",
-    },
-    {
-      id: 2,
-      title: "Aviso sobre manutenção do site",
-      date: "12 de Outubro de 2025",
-      description: "O site ficará fora do ar entre 22h e 23h do dia 20/10.",
     },
   ];
 
@@ -218,13 +212,13 @@ export default function Comunicacao() {
           {/* COMUNICADOS */}
           {active === "comunicados" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {comunicados.map((c) => (
+              {comunicadosData.map((c) => (
                 <div
                   key={c.id}
                   className="bg-white rounded-md p-4 shadow-sm hover:shadow-md">
-                  <h3 className="font-semibold">{c.title}</h3>
-                  <p className="text-gray-500 text-sm">{c.date}</p>
-                  <p className="mt-2 text-gray-700">{c.description}</p>
+                  <h3 className="font-semibold">{c.titulo}</h3>
+                  <p className="text-gray-500 text-sm">{c.data}</p>
+                  <p className="mt-2 text-gray-700">{c.conteudo}</p>
                 </div>
               ))}
             </div>

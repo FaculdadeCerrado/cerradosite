@@ -15,6 +15,7 @@ import InfoCursos from "./pages/InfoCursos";
 import GerenciadorCursos from "./pages/Admins/GerenciadorCursos";
 import GerenciadorModulos from "./pages/Admins/GerenciadorModulos";
 import Gerenciadornoticias from "./pages/Admins/Gerenciadornoticias";
+import Gerenciadorcomunicados from "./pages/Admins/GerenciadorComunicados";
 import NoticiaPage from "./pages/NoticiaPage";
 
 function AppRoutes() {
@@ -35,6 +36,10 @@ function AppRoutes() {
         <Route path="/cursos" element={<Cursos />} />
         <Route path="/gerenciador-cursos" element={<GerenciadorCursos />} />
         <Route path="/gerenciador-noticias" element={<Gerenciadornoticias />} />
+        <Route
+          path="/gerenciador-comunicados"
+          element={<Gerenciadorcomunicados />}
+        />
         <Route path="/noticia/:id" element={<NoticiaPage />} />
         <Route
           path="/gerenciador-modulos/:cursoId"
