@@ -1,46 +1,51 @@
+import { useEffect, useState } from "react";
 import fundoSection from "../../images/Logo/fundo-section.svg";
-import logo from "../../images/Logo/Logo Faculdade Cerrado - Colorida - Lateral.png";
-const NewsSection = () => {
-  const newsData = [
-    {
-      id: 1,
-      date: "9 de julho de 2025",
-      title: "lorem ipsum dolor sit amet - lorem ipsum dolor sit amet",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-      image: logo,
-      link: "/noticias/",
-    },
-    {
-      id: 2,
-      date: "9 de julho de 2025",
-      title: "lorem ipsum dolor sit amet - lorem ipsum dolor sit amet",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-      image: logo,
-      link: "/noticias/",
-    },
-    {
-      id: 3,
-      date: "9 de julho de 2025",
-      title: "lorem ipsum dolor sit amet - lorem ipsum dolor sit amet",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea comodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ",
-      image: logo,
-      link: "/noticias/",
-    },
-  ];
+import { getNoticias } from "../../service/noticiaService";
+
+const ROTATE_INTERVAL = 5000; // ⏱️ alterna a cada 5s
+
+export default function NewsSection() {
+  const [destaques, setDestaques] = useState([]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    async function load() {
+      const data = await getNoticias();
+      const apenasDestaques = data.filter((n) => Number(n.destaque) === 1);
+      setDestaques(apenasDestaques);
+    }
+    load();
+  }, []);
+
+  // Rotação automática
+  useEffect(() => {
+    if (destaques.length <= 3) return;
+
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 3) % destaques.length);
+    }, ROTATE_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [destaques]);
+
+  // pegar os 3 da vez
+  const exibicao = destaques.slice(index, index + 3);
+
+  // caso não tenha 3 disponíveis no slice, completar do início
+  if (exibicao.length < 3 && destaques.length > 3) {
+    exibicao.push(...destaques.slice(0, 3 - exibicao.length));
+  }
 
   return (
     <section
-      className="min-h-screen bg-no-repeat bg-cover relative overflow-hidden  "
+      className="min-h-screen bg-no-repeat bg-cover relative overflow-hidden"
       style={{
         backgroundImage: `url(${fundoSection})`,
       }}>
       <div className="relative z-10">
         <div className="flex items-start justify-between p-8">
           <div>
-            <h2 className="text-4xl font-bold  ">Nossa Ultimas Notícias</h2>
+            <h2 className="text-4xl font-bold">Nossa Últimas Notícias</h2>
             <p className="text-gray-800">
               Fique por dentro das últimas novidades
             </p>
@@ -65,31 +70,33 @@ const NewsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-8">
-          {newsData.map((news) => (
+          {exibicao.map((news) => (
             <div
               key={news.id}
-              className="bg-white-50  border-2 border-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 "
+              className="bg-white-50 border-2 border-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
               style={{
                 boxShadow:
                   "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
               }}>
               <div className="aspect-w-16 aspect-h-9 overflow-hidden">
                 <img
-                  src={news.image || "/placeholder.svg"}
-                  alt={news.title}
+                  src={news.imagem || "/placeholder.svg"}
+                  alt={news.titulo}
                   className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300 p-2"
                 />
               </div>
               <div className="p-6">
-                <p className="text-sm text-gray-500 mb-3">{news.date}</p>
-                <h3 className="text-lg font-semibold mb-3 line-clamp-2 text-balance">
-                  {news.title}
+                <p className="text-sm text-gray-500 mb-3">
+                  {news.data_publicacao}
+                </p>
+                <h3 className="text-lg font-semibold mb-3 line-clamp-2">
+                  {news.titulo}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-4">
-                  {news.description}
+                  {news.descricao}
                 </p>
                 <a
-                  href={news.link}
+                  href={`/noticia/${news.id}`}
                   className="inline-flex items-center text-purple-600 hover:text-purple-800 font-medium text-sm transition-colors">
                   Leia mais
                   <svg
@@ -112,12 +119,4 @@ const NewsSection = () => {
       </div>
     </section>
   );
-};
-
-export default NewsSection;
-{
-  /* DESENVOLVIDO POR JOÃO GABRIEL SOUTO 
-     -https://www.linkedin.com/in/gabrielsouto01
-     -https://github.com/soutozk
-     -https://www.instagram.com/soutozk/ */
 }

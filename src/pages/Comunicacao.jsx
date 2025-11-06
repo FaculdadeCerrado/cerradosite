@@ -2,11 +2,16 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import { videos } from "../../src/Data/VideoData";
+import { getNoticias } from "../service/noticiaService";
+import { useNavigate } from "react-router-dom";
 
 export default function Comunicacao() {
-  const [active, setActive] = useState("noticias"); // 'noticias' | 'videos' | 'fotos' | 'eventos' | 'comunicados'
+  const [active, setActive] = useState("noticias");
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
     if (location.state?.categoria) {
@@ -14,35 +19,13 @@ export default function Comunicacao() {
     }
   }, [location.state]);
 
-  // Dados de notícias
-  const newsData = [
-    {
-      id: 1,
-      title: "Novo semestre inicia com atividades especiais",
-      date: "10 de Outubro de 2025",
-      category: "Acadêmico",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-      image: "/images/news1.jpg",
-    },
-    {
-      id: 2,
-      title: "Palestra sobre inovação tecnológica",
-      date: "05 de Outubro de 2025",
-      category: "Eventos",
-      description:
-        "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus...",
-      image: "/images/news2.jpg",
-    },
-    {
-      id: 3,
-      title: "Galeria de fotos do dia da ciência",
-      date: "02 de Outubro de 2025",
-      category: "Fotos",
-      description:
-        "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices...",
-      image: "/images/news3.jpg",
-    },
-  ];
+  useEffect(() => {
+    async function loadNoticias() {
+      const data = await getNoticias();
+      setNewsData(data);
+    }
+    loadNoticias();
+  }, []);
 
   // Dados de fotos
   const photos = [
@@ -93,7 +76,6 @@ export default function Comunicacao() {
 
   return (
     <>
-      {" "}
       <NavBar />
       <div className="min-h-screen flex bg-gray-100 text-gray-800">
         {/* Sidebar */}
@@ -116,8 +98,8 @@ export default function Comunicacao() {
           </nav>
         </aside>
 
-        {/* Mobile sidebar toggle */}
-        <div className="md:hidden w-full border-b border-gray-200 bg-transparent p-3 flex items-center justify-between">
+        {/* Mobile */}
+        <div className="md:hidden w-full border-b border-gray-200 p-3 flex items-center justify-between">
           <div className="text-sm font-semibold">Comunicação</div>
           <button
             onClick={() => setMobileOpen((s) => !s)}
@@ -126,7 +108,6 @@ export default function Comunicacao() {
           </button>
         </div>
 
-        {/* Mobile Sidebar Drawer */}
         {mobileOpen && (
           <div className="md:hidden absolute z-40 left-0 top-12 w-64 bg-white border-r border-gray-200 shadow-lg p-4">
             <nav className="flex flex-col gap-2 text-sm">
@@ -149,30 +130,32 @@ export default function Comunicacao() {
           </div>
         )}
 
-        {/* Main content */}
+        {/* Main */}
         <main className="flex-1 p-6">
           <h1 className="text-xl font-semibold capitalize mb-6">{active}</h1>
 
-          {/* Notícias */}
+          {/* ✅ NOTÍCIAS */}
           {active === "noticias" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {newsData.map((news) => (
                 <div
                   key={news.id}
                   className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md cursor-pointer transition-shadow"
-                  onClick={() => setSelectedNews(news)}>
+                  onClick={() => navigate(`/noticia/${news.id}`)}>
                   <img
-                    src={news.image}
-                    alt={news.title}
+                    src={news.imagem}
+                    alt={news.titulo}
                     className="h-40 w-full object-cover"
                   />
                   <div className="p-4">
-                    <p className="text-xs text-gray-500">{news.date}</p>
+                    <p className="text-xs text-gray-500">
+                      {news.data_publicacao}
+                    </p>
                     <h3 className="font-semibold text-gray-800 mt-1">
-                      {news.title}
+                      {news.titulo}
                     </h3>
                     <p className="text-gray-600 text-sm mt-2 line-clamp-3">
-                      {news.description}
+                      {news.descricao}
                     </p>
                   </div>
                 </div>
@@ -180,7 +163,7 @@ export default function Comunicacao() {
             </div>
           )}
 
-          {/* Vídeos */}
+          {/* VÍDEOS */}
           {active === "videos" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {videos.map((v) => (
@@ -199,7 +182,7 @@ export default function Comunicacao() {
             </div>
           )}
 
-          {/* Fotos */}
+          {/* FOTOS */}
           {active === "fotos" && (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {photos.map((src, idx) => (
@@ -210,20 +193,20 @@ export default function Comunicacao() {
                   <img
                     src={src}
                     alt={`Foto ${idx + 1}`}
-                    className="w-full h-36 object-cover transform hover:scale-105 transition-transform"
+                    className="w-full h-36 object-cover hover:scale-105 transition-transform"
                   />
                 </button>
               ))}
             </div>
           )}
 
-          {/* Eventos */}
+          {/* EVENTOS */}
           {active === "eventos" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {eventos.map((e) => (
                 <div
                   key={e.id}
-                  className="bg-white rounded-md p-4 shadow-sm hover:shadow-md transition-shadow">
+                  className="bg-white rounded-md p-4 shadow-sm hover:shadow-md">
                   <h3 className="font-semibold">{e.title}</h3>
                   <p className="text-gray-500 text-sm">{e.date}</p>
                   <p className="mt-2 text-gray-700">{e.description}</p>
@@ -232,13 +215,13 @@ export default function Comunicacao() {
             </div>
           )}
 
-          {/* Comunicados */}
+          {/* COMUNICADOS */}
           {active === "comunicados" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {comunicados.map((c) => (
                 <div
                   key={c.id}
-                  className="bg-white rounded-md p-4 shadow-sm hover:shadow-md transition-shadow">
+                  className="bg-white rounded-md p-4 shadow-sm hover:shadow-md">
                   <h3 className="font-semibold">{c.title}</h3>
                   <p className="text-gray-500 text-sm">{c.date}</p>
                   <p className="mt-2 text-gray-700">{c.description}</p>
@@ -247,37 +230,16 @@ export default function Comunicacao() {
             </div>
           )}
 
-          {/* Modais */}
-          {selectedNews && (
-            <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6">
-              <div className="bg-white rounded-lg max-w-3xl w-full p-6 overflow-y-auto max-h-[90vh]">
-                <button
-                  onClick={() => setSelectedNews(null)}
-                  className="mb-4 px-3 py-1 bg-gray-200 rounded text-sm hover:bg-gray-300">
-                  Fechar
-                </button>
-                <img
-                  src={selectedNews.image}
-                  alt={selectedNews.title}
-                  className="w-full h-64 object-cover rounded"
-                />
-                <h2 className="text-xl font-semibold mt-4">
-                  {selectedNews.title}
-                </h2>
-                <p className="text-gray-500 text-sm">{selectedNews.date}</p>
-                <p className="mt-4 text-gray-700">{selectedNews.description}</p>
-              </div>
-            </div>
-          )}
-
+          {/* VIDEO MODAL */}
           {selectedVideo && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
               <div className="w-full max-w-4xl h-[80vh] bg-black relative">
                 <button
                   onClick={() => setSelectedVideo(null)}
-                  className="absolute right-3 top-3 z-50 bg-white/90 rounded-full px-3 py-1 text-sm">
+                  className="absolute right-3 top-3 bg-white/90 rounded-full px-3 py-1">
                   Fechar
                 </button>
+
                 <iframe
                   src={selectedVideo.embed}
                   title={selectedVideo.title}
@@ -288,6 +250,7 @@ export default function Comunicacao() {
             </div>
           )}
 
+          {/* FOTO MODAL */}
           {selectedPhoto && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
               <div className="max-w-4xl w-full">
@@ -296,6 +259,7 @@ export default function Comunicacao() {
                   className="mb-3 bg-white/90 px-3 py-1 rounded">
                   Fechar
                 </button>
+
                 <img
                   src={selectedPhoto}
                   alt="Selecionada"
