@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import Footer from "../Components/Footer/footer.jsx";
 import Banner from "../Components/BannerHome/BannerHome";
 import FaqSection from "../Components/Faq/Faq";
 import SearchCard from "../Components/SearchCard/SearchCard";
@@ -23,7 +24,7 @@ export default function Home() {
       <AboutSectionHome />
       {/* <FaqSection /> */}
       <WhatsAppWidget />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }
