@@ -7,7 +7,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider initialTheme="christmas">
+    <ThemeProvider initialTheme="a">
       <AppRoutes />
     </ThemeProvider>
   </React.StrictMode>

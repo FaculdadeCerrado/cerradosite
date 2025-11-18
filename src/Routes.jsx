@@ -17,6 +17,7 @@ import GerenciadorModulos from "./pages/Admins/GerenciadorModulos";
 import Gerenciadornoticias from "./pages/Admins/Gerenciadornoticias";
 import Gerenciadorcomunicados from "./pages/Admins/GerenciadorComunicados";
 import NoticiaPage from "./pages/NoticiaPage";
+import CursoIdealQuiz from "../src/pages/CursoIdealQuiz";
 
 function AppRoutes() {
   return (
@@ -34,6 +35,8 @@ function AppRoutes() {
         <Route path="/biblioteca" element={<HomeBiblioteca />} />
         <Route path="/jornais-eletronicos" element={<JornaisEletronicos />} />
         <Route path="/cursos" element={<Cursos />} />
+        <Route path="/curso-ideal" element={<CursoIdealQuiz />} />
+        {/* admins */}
         <Route path="/gerenciador-cursos" element={<GerenciadorCursos />} />
         <Route path="/gerenciador-noticias" element={<Gerenciadornoticias />} />
         <Route
