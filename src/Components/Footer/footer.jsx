@@ -99,7 +99,7 @@ export default function Footer() {
           <h3 className="font-semibold mb-3">AVALE-NOS NO GOOGLE</h3>
           <button className="bg-[#1B1B1B] px-6 py-3 rounded-lg shadow">
             <img
-              src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/google-avaliacao.png"
+              src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/avaliacao-google-menor.png"
               alt="Avalie-nos no Google"
               className="w-44"
             />
@@ -141,26 +141,26 @@ export default function Footer() {
         <div className="hidden md:block">
           <div className="text-center flex items-center flex-col">
             <h3 className="font-semibold mb-3">E-MEC</h3>
-            <p>
+            {/*  <p>
               Consulte aqui o cadastro da <br /> Instituição no Sistema e-MEC
-            </p>
+            </p> */}
             <img
-              src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/qr-e-mec.png"
+              src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/Codigo-QR-MEC.png"
               alt="QR Code E-MEC"
-              className="w-40"
+              className="w-48"
             />
           </div>
         </div>
         <div className="mt-10 md:hidden">
           <div className="text-center flex items-center flex-col">
             <h3 className="font-semibold mb-3">E-MEC</h3>
-            <p>
+            {/*  <p>
               Consulte aqui o cadastro da <br /> Instituição no Sistema e-MEC
-            </p>
+            </p> */}
             <img
-              src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/qr-e-mec.png"
+              src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/Codigo-QR-MEC.png"
               alt="QR Code E-MEC"
-              className="w-40"
+              className="w-48"
             />
           </div>
         </div>

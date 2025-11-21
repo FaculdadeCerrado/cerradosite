@@ -2,7 +2,7 @@ import React from "react";
 import { Globe } from "lucide-react";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { JornaisBanners } from "../../Data/BannerData";
-import Footer from "../Components/Footer/footer.jsx";
+import Footer from "../../Components/Footer/footer.jsx";
 
 export default function JornaisEletronicos() {
   const jornais = [

@@ -1,7 +1,7 @@
 import React from "react";
 import { BookOpen, FileText, Library, Eye } from "lucide-react";
 import Libras from "../../images/Logo/Libras.png";
-import Footer from "../Components/Footer/footer.jsx";
+import Footer from "../../Components/Footer/footer.jsx";
 
 const PauloFreirePage = () => {
   return (

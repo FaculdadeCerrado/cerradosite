@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FullScreenBannerVideo from "../../Components/FullScreenBannerVideo/FullScreenBannerVideo";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { HomeBanners } from "../../Data/BannerData.js";
-import Footer from "../Components/Footer/footer.jsx";
+import Footer from "../../Components/Footer/footer.jsx";
 import Navbar from "../../Components/NavBar/NavBar";
 
 export default function ClinicaEscola() {

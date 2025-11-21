@@ -9,7 +9,7 @@ import Unibook from "../../images/Portais/Unibook.png";
 import Curatoria from "../../images/Portais/curatoria.png";
 import Pearson from "../../images/Portais/pearson.png";
 import CarouselWithText from "../../Components/CarouselWithText/CarouselWithText";
-import Footer from "../Components/Footer/footer.jsx";
+import Footer from "../../Components/Footer/footer.jsx";
 import { carouselDataBiblioteca } from "../../Data/CarouselData";
 
 export default function HomeBiblioteca() {
