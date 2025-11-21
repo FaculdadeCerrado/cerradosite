@@ -4,6 +4,7 @@ import NavBar from "../Components/NavBar/NavBar";
 import { videos } from "../../src/Data/VideoData";
 import { getNoticias } from "../service/noticiaService";
 import { getComunicados } from "../service/comunicadosService";
+import { getEventos } from "../service/eventosService";
 import { useNavigate } from "react-router-dom";
 
 export default function Comunicacao() {
@@ -14,6 +15,7 @@ export default function Comunicacao() {
 
   const [newsData, setNewsData] = useState([]);
   const [comunicadosData, setComunicadosData] = useState([]);
+  const [eventosData, setEventosData] = useState([]);
 
   useEffect(() => {
     if (location.state?.categoria) {
@@ -47,21 +49,13 @@ export default function Comunicacao() {
     "/images/photo6.jpg",
   ];
 
-  // Dados de eventos
-  const eventos = [
-    {
-      id: 1,
-      title: "Feira de Ciências",
-      date: "20 de Outubro de 2025",
-      description: "Apresentação de projetos inovadores da universidade.",
-    },
-    {
-      id: 2,
-      title: "Semana Cultural",
-      date: "25 de Outubro de 2025",
-      description: "Diversas atividades culturais e artísticas.",
-    },
-  ];
+  useEffect(() => {
+    async function loadEventos() {
+      const data = await getEventos();
+      setEventosData(data);
+    }
+    loadEventos();
+  }, []);
 
   // Estado para modais
   const [selectedNews, setSelectedNews] = useState(null);
@@ -193,17 +187,22 @@ export default function Comunicacao() {
               ))}
             </div>
           )}
-
-          {/* EVENTOS */}
           {active === "eventos" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {eventos.map((e) => (
+              {eventosData.map((e) => (
                 <div
                   key={e.id}
-                  className="bg-white rounded-md p-4 shadow-sm hover:shadow-md">
-                  <h3 className="font-semibold">{e.title}</h3>
-                  <p className="text-gray-500 text-sm">{e.date}</p>
-                  <p className="mt-2 text-gray-700">{e.description}</p>
+                  className="bg-white rounded-md p-4 shadow-sm hover:shadow-md cursor-pointer"
+                  onClick={() => navigate(`/evento/${e.id}`)}>
+                  <h3 className="font-semibold">{e.titulo}</h3>
+
+                  <p className="text-gray-500 text-sm">
+                    {e.data_inicio} {e.data_fim ? `até ${e.data_fim}` : ""}
+                  </p>
+
+                  <p className="mt-2 text-gray-700 line-clamp-3">
+                    {e.descricao}
+                  </p>
                 </div>
               ))}
             </div>

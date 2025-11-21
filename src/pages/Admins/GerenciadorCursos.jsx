@@ -326,7 +326,7 @@ export default function Cursos() {
             className="border p-2 rounded"
           />
 
-          <label className="flex items-center gap-2">
+          {/* <label className="flex items-center gap-2">
             <input
               type="checkbox"
               name="estagio_supervisionado"
@@ -343,7 +343,7 @@ export default function Cursos() {
             onChange={handleChange}
             placeholder="Carga horária do estágio"
             className="border p-2 rounded"
-          />
+          /> */}
 
           <div className="flex gap-2">
             <button
