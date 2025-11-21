@@ -17,6 +17,7 @@ import GerenciadorModulos from "./pages/Admins/GerenciadorModulos";
 import Gerenciadornoticias from "./pages/Admins/Gerenciadornoticias";
 import Gerenciadorcomunicados from "./pages/Admins/GerenciadorComunicados";
 import Gerenciadoreventos from "./pages/Admins/GerenciadorEventos";
+import GerenciadorTemas from "./pages/Admins/GerenciadorTema";
 import NoticiaPage from "./pages/NoticiaPage";
 import EventosPage from "./pages/EventosPage";
 import CursoIdealQuiz from "../src/pages/CursoIdealQuiz";
@@ -48,7 +49,8 @@ function AppRoutes() {
         <Route
           path="/gerenciador-comunicados"
           element={<Gerenciadorcomunicados />}
-        />
+        />{" "}
+        <Route path="/gerenciador-temas" element={<GerenciadorTemas />} />
         <Route path="/gerenciador-eventos" element={<Gerenciadoreventos />} />
         <Route path="/noticia/:id" element={<NoticiaPage />} />
         <Route path="/evento/:id" element={<EventosPage />} />
