@@ -1,6 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import Footer from "../Components/Footer/footer.jsx";
+
 import { motion } from "framer-motion";
 
 import { videos } from "../../src/Data/VideoData";
@@ -371,6 +373,7 @@ export default function Comunicacao() {
           )}
         </main>
       </div>
+      <Footer />
     </>
   );
 }

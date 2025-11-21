@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import NavBar from "../Components/NavBar/NavBar";
 import Banner from "../Components/BannerStatusEvento/BannerStatusEvento";
+import Footer from "../Components/Footer/footer.jsx";
 import { getEventoCompleto } from "../service/eventosService";
 
 export default function EventoPage() {
@@ -182,6 +183,7 @@ export default function EventoPage() {
           )}
         </div>
       </motion.div>
+      <Footer />
     </>
   );
 }

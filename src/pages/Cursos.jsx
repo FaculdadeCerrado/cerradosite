@@ -5,6 +5,7 @@ import { CalendarDays, Clock, Info, ArrowRight, Search } from "lucide-react";
 import { getCursos } from "../service/cursoService";
 import { TypeWriter } from "../Components/TypeWriter/TypeWriter";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
+import Footer from "../Components/Footer/footer.jsx";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Cursos() {
@@ -333,6 +334,7 @@ export default function Cursos() {
         </AnimatePresence>
       </div>
       <WhatsAppWidget />
+      <Footer />
     </>
   );
 }

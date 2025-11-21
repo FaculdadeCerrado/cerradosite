@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import { OuvidoriaBanners } from "../Data/BannerData.js";
 import Banner from "../Components/BannerHome/BannerHome";
+import Footer from "../Components/Footer/footer.jsx";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 import { Mail, Phone, MapPin, X } from "lucide-react";
 
@@ -263,6 +264,7 @@ export default function Ouvidoria() {
       )}
 
       <WhatsAppWidget />
+      <Footer />
     </main>
   );
 }

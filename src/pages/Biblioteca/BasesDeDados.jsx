@@ -1,6 +1,8 @@
 import React from "react";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { HomeBanners } from "../../Data/BannerData";
+import Footer from "../Components/Footer/footer.jsx";
+
 export default function BasesDeDados() {
   const bases = [
     {
@@ -72,6 +74,7 @@ export default function BasesDeDados() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

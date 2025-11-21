@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import Footer from "../Components/Footer/footer.jsx";
 
 export default function Quiz() {
   const questions = [
@@ -271,6 +272,7 @@ export default function Quiz() {
           )}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

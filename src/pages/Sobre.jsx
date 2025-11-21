@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import Footer from "../Components/Footer/footer.jsx";
 import Cerradodf from "../images/Institucional/Cerradodf.png";
 
 export default function FaculdadeCERRADO() {
@@ -232,7 +233,8 @@ export default function FaculdadeCERRADO() {
             </p>
           </div>
         </section>
-      </div>
+      </div>{" "}
+      <Footer />
     </main>
   );
 }

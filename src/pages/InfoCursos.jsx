@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp, Info, Layers, Star } from "lucide-react";
 import { getCursoCompleto } from "../service/cursoService";
 import NavBar from "../Components/NavBar/NavBar.jsx";
+import Footer from "../Components/Footer/footer.jsx";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function InfoCurso() {
@@ -283,6 +284,7 @@ export default function InfoCurso() {
           </motion.aside>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

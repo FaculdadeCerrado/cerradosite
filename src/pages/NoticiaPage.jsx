@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
+import Footer from "../Components/Footer/footer.jsx";
 import { getNoticia, getNoticias } from "../service/noticiaService";
 
 export default function NoticiaPage() {
@@ -32,7 +33,6 @@ export default function NoticiaPage() {
   return (
     <>
       <NavBar />
-
       <div className="max-w-4xl mx-auto p-6">
         <img
           src={noticia.imagem}
@@ -49,7 +49,6 @@ export default function NoticiaPage() {
           dangerouslySetInnerHTML={{ __html: noticia.conteudo }}
         />
       </div>
-
       {/* ✅ SUGESTÕES */}
       {sugestoes.length > 0 && (
         <div className="max-w-4xl mx-auto p-6">
@@ -77,7 +76,8 @@ export default function NoticiaPage() {
             ))}
           </div>
         </div>
-      )}
+      )}{" "}
+      <Footer />
     </>
   );
 }

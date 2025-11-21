@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Smartphone } from "lucide-react";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { PeriodicosBanners } from "../../Data/BannerData";
+import Footer from "../Components/Footer/footer.jsx";
+
 export default function PeriodicosEletronicos() {
   const periodicos = {
     "Gestão em Recursos Humanos": [
@@ -263,6 +265,7 @@ export default function PeriodicosEletronicos() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

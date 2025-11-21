@@ -1,6 +1,8 @@
 import React from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import { RepositorioAcademicoBanners } from "../Data/BannerData.js";
+import Footer from "../Components/Footer/footer.jsx";
+
 import Banner from "../Components/BannerHome/BannerHome";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 
@@ -64,7 +66,7 @@ export default function RepositorioAcademico() {
         <div></div>
       </section>
       <WhatsAppWidget />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }
