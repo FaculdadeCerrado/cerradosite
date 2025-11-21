@@ -24,7 +24,7 @@ export default function Eventos() {
     data_inicio: "",
     data_fim: "",
     horario: "",
-    programacao: "",
+    programacao: [],
     palestrantes: [],
     link_inscricao: "",
   });
@@ -90,7 +90,7 @@ export default function Eventos() {
       data_inicio: "",
       data_fim: "",
       horario: "",
-      programacao: "",
+      programacao: [],
       palestrantes: [],
       link_inscricao: "",
     });
@@ -130,6 +130,34 @@ export default function Eventos() {
     const novos = [...form.palestrantes];
     novos.splice(index, 1);
     setForm({ ...form, palestrantes: novos });
+  };
+  const [programacaoTemp, setProgramacaoTemp] = useState({
+    horario: "",
+    atividade: "",
+    local: "",
+    data: "",
+  });
+
+  const addProgramacao = () => {
+    if (
+      !programacaoTemp.horario.trim() ||
+      !programacaoTemp.atividade.trim() ||
+      !programacaoTemp.local.trim() ||
+      !programacaoTemp.data.trim()
+    )
+      return;
+
+    setForm({
+      ...form,
+      programacao: [...form.programacao, programacaoTemp],
+    });
+
+    setProgramacaoTemp({ horario: "", atividade: "", local: "", data: "" });
+  };
+  const removeProgramacao = (index) => {
+    const novaLista = [...form.programacao];
+    novaLista.splice(index, 1);
+    setForm({ ...form, programacao: novaLista });
   };
 
   return (
@@ -217,13 +245,95 @@ export default function Eventos() {
             className="border p-2 rounded"
           />
 
-          <textarea
-            name="programacao"
-            value={form.programacao}
-            onChange={handleChange}
-            placeholder="Programação"
-            className="border p-2 rounded"
-          />
+          <div className="border p-3 rounded">
+            <h3 className="font-bold mb-2">Programação</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 mb-3">
+              <input
+                type="text"
+                placeholder="Horário (ex: 08h)"
+                value={programacaoTemp.horario}
+                onChange={(e) =>
+                  setProgramacaoTemp({
+                    ...programacaoTemp,
+                    horario: e.target.value,
+                  })
+                }
+                className="border p-2 rounded w-full"
+              />
+
+              <input
+                type="text"
+                placeholder="Atividade"
+                value={programacaoTemp.atividade}
+                onChange={(e) =>
+                  setProgramacaoTemp({
+                    ...programacaoTemp,
+                    atividade: e.target.value,
+                  })
+                }
+                className="border p-2 rounded w-full"
+              />
+
+              <input
+                type="text"
+                placeholder="Local"
+                value={programacaoTemp.local}
+                onChange={(e) =>
+                  setProgramacaoTemp({
+                    ...programacaoTemp,
+                    local: e.target.value,
+                  })
+                }
+                className="border p-2 rounded w-full"
+              />
+
+              <input
+                type="date"
+                value={programacaoTemp.data}
+                onChange={(e) =>
+                  setProgramacaoTemp({
+                    ...programacaoTemp,
+                    data: e.target.value,
+                  })
+                }
+                className="border p-2 rounded w-full"
+              />
+            </div>
+
+            <button
+              type="button"
+              onClick={addProgramacao}
+              className="bg-green-600 text-white px-4 py-2 rounded mb-3">
+              + Adicionar item
+            </button>
+
+            {/* Lista da Programação */}
+            {form.programacao.length > 0 && (
+              <ul className="space-y-2">
+                {form.programacao.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex justify-between p-2 bg-gray-100 rounded">
+                    <span>
+                      <b>{item.horario}</b> — {item.atividade}
+                      <br />
+                      <b>Local:</b> {item.local}
+                      <br />
+                      <b>Data:</b> {item.data}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => removeProgramacao(index)}
+                      className="text-red-600 font-bold">
+                      X
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
           <div className="border p-3 rounded">
             <h3 className="font-bold mb-2">Palestrantes</h3>
