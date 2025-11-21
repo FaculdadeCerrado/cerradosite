@@ -23,6 +23,8 @@ import EventosPage from "./pages/EventosPage";
 import CursoIdealQuiz from "../src/pages/CursoIdealQuiz";
 import LinkBio from "../src/pages/LinkBio/LinkBio";
 import Clinica from "../src/pages/Clinica-Escola/Clinica";
+import NupePage from "../src/pages/NupePaage";
+import CpaPage from "../src/pages/CpaPage";
 
 function AppRoutes() {
   return (
@@ -33,6 +35,8 @@ function AppRoutes() {
         <Route path="/links" element={<LinkBio />} />
         <Route path="/comunicacao" element={<Comunicacao />} />
         <Route path="/clinica-escola" element={<Clinica />} />
+        <Route path="/nupe" element={<NupePage />} />
+        <Route path="/cpa" element={<CpaPage />} />
         <Route
           path="/repositorio-academico"
           element={<RepositorioAcademico />}

@@ -20,7 +20,7 @@ after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0
 
         {/* Dropdown */}
         <div
-          className="absolute left-0 top-full mt-1 w-80 bg-white shadow-lg rounded-md
+          className="absolute left-0 top-full mt-1 w-96 bg-white shadow-lg rounded-md
 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10 grid grid-cols-2 gap-4 p-4">
           {/* Coluna Institucional */}
           <div>
@@ -74,6 +74,29 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opaci
               className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
               Comunicados
             </button>
+          </div>
+          {/* Coluna NUPE + CPA */}
+          <div>
+            <p className="text-orange-500 font-semibold border-b border-orange-200 mb-2 pb-1 w-40">
+              Núcleos e Comissões
+            </p>
+            <p className="text-gray-600 text-sm font-medium mt-1 mb-1">
+              NUPE – Psicologia
+            </p>
+            <a
+              href="/nupe"
+              className="block px-2 py-1 rounded hover:bg-orange-100 w-80">
+              NUPE – Núcleo de Pesquisa e Extensão do Curso de Psicologia da
+              Faculdade Cerrado
+            </a>
+
+            {/* CPA */}
+            <p className="text-gray-600 text-sm font-medium mt-3 mb-1">CPA</p>
+            <a
+              href="/cpa"
+              className="block px-2 py-1 rounded hover:bg-orange-100">
+              Sobre a CPA
+            </a>
           </div>
         </div>
       </div>
