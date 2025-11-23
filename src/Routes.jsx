@@ -36,6 +36,7 @@ import Gerenciadoreventos from "./pages/Admins/GerenciadorEventos";
 import GerenciadorTemas from "./pages/Admins/GerenciadorTema";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PainelAdmin from "./pages/Painel";
 
 function AppRoutes() {
   return (
@@ -45,7 +46,6 @@ function AppRoutes() {
           {/* Páginas públicas */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/links" element={<LinkBio />} />
@@ -57,7 +57,6 @@ function AppRoutes() {
             path="/repositorio-academico"
             element={<RepositorioAcademico />}
           />
-
           {/* Biblioteca */}
           <Route path="/biblioteca" element={<HomeBiblioteca />} />
           <Route path="/jornais-eletronicos" element={<JornaisEletronicos />} />
@@ -70,20 +69,16 @@ function AppRoutes() {
             path="/repositorio-paulo-freire"
             element={<RepositorioPaulo />}
           />
-
           {/* Cursos */}
           <Route path="/cursos" element={<Cursos />} />
           <Route path="/info-curso/:id" element={<InfoCursos />} />
           <Route path="/curso-ideal" element={<CursoIdealQuiz />} />
-
           {/* Notícias e Eventos */}
           <Route path="/noticia/:id" element={<NoticiaPage />} />
           <Route path="/evento/:id" element={<EventosPage />} />
-
           {/* Outros */}
           <Route path="/teste" element={<TourVirtual />} />
           <Route path="/ouvidoria" element={<Ouvidoria />} />
-
           {/* Admin */}
           <Route
             path="/gerenciador-cursos"
@@ -130,6 +125,14 @@ function AppRoutes() {
             element={
               <PrivateRoute>
                 <GerenciadorModulos />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/painel"
+            element={
+              <PrivateRoute>
+                <PainelAdmin />
               </PrivateRoute>
             }
           />

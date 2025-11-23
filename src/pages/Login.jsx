@@ -21,7 +21,7 @@ export default function Login() {
       return;
     }
 
-    navigate("/gerenciador-cursos");
+    navigate("/painel");
   };
 
   return (
