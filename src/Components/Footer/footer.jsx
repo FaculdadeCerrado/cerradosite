@@ -96,7 +96,7 @@ export default function Footer() {
 
       <div className="w-full max-w-7xl mx-auto px-6 mt-16 flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:text-left mb-10 md:mb-0">
-          <h3 className="font-semibold mb-3">AVALE-NOS NO GOOGLE</h3>
+          <h3 className="font-semibold mb-3">AVALIE-NOS NO GOOGLE</h3>
           <button className="bg-[#1B1B1B] px-6 py-3 rounded-lg shadow">
             <img
               src="https://gerenciador.faculdadecerrado.edu.br/uploads/Logo/avaliacao-google-menor.png"
