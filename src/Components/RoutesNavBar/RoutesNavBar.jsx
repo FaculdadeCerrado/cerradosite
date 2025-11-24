@@ -1,11 +1,131 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const RoutesNavBar = () => {
+const RoutesNavBar = ({ mobile }) => {
   const navigate = useNavigate();
 
   const goToComunicacao = (categoria) => {
     navigate("/comunicacao", { state: { categoria } });
   };
+
+  // Estados para dropdowns do MOBILE
+  const [openInstitucional, setOpenInstitucional] = useState(false);
+  const [openComunicacao, setOpenComunicacao] = useState(false);
+  const [openBiblioteca, setOpenBiblioteca] = useState(false);
+
+  // ------------------------------
+  // MOBILE MODE
+  // ------------------------------
+  if (mobile) {
+    return (
+      <nav className="flex flex-col space-y-4 text-lg text-gray-800">
+        {/* INSTITUCIONAL */}
+        <button
+          onClick={() => setOpenInstitucional(!openInstitucional)}
+          className="flex justify-between items-center font-medium w-full">
+          Institucional
+          <span>{openInstitucional ? "▲" : "▼"}</span>
+        </button>
+
+        {openInstitucional && (
+          <div className="ml-4 space-y-2 animate-fadeIn">
+            <a href="#sobre-nos" className="block">
+              Sobre nós
+            </a>
+            <a href="#missao" className="block">
+              Missão
+            </a>
+            <a href="#valores" className="block">
+              Valores
+            </a>
+          </div>
+        )}
+
+        {/* COMUNICAÇÃO */}
+        <button
+          onClick={() => setOpenComunicacao(!openComunicacao)}
+          className="flex justify-between items-center font-medium w-full">
+          Comunicação
+          <span>{openComunicacao ? "▲" : "▼"}</span>
+        </button>
+
+        {openComunicacao && (
+          <div className="ml-4 flex flex-col space-y-2 animate-fadeIn">
+            <button
+              onClick={() => goToComunicacao("eventos")}
+              className="text-left">
+              Eventos
+            </button>
+            <button
+              onClick={() => goToComunicacao("noticias")}
+              className="text-left">
+              Notícias
+            </button>
+            <button
+              onClick={() => goToComunicacao("videos")}
+              className="text-left">
+              Vídeos
+            </button>
+            <button
+              onClick={() => goToComunicacao("fotos")}
+              className="text-left">
+              Fotos
+            </button>
+            <button
+              onClick={() => goToComunicacao("comunicados")}
+              className="text-left">
+              Comunicados
+            </button>
+          </div>
+        )}
+
+        {/* NUPES */}
+        <a href="/nupe" className="font-medium">
+          NUPE – Psicologia
+        </a>
+        <a href="/cpa">CPA</a>
+
+        {/* CLÍNICA / CURSOS */}
+        <a href="/clinica" className="font-medium">
+          Clínica Escola
+        </a>
+        <a href="/cursos">Cursos</a>
+
+        {/* BIBLIOTECA */}
+        <button
+          onClick={() => setOpenBiblioteca(!openBiblioteca)}
+          className="flex justify-between items-center font-medium w-full">
+          Biblioteca
+          <span>{openBiblioteca ? "▲" : "▼"}</span>
+        </button>
+
+        {openBiblioteca && (
+          <div className="ml-4 flex flex-col space-y-2 animate-fadeIn">
+            <a href="/repositorio-academico">Repositório Acadêmico</a>
+          </div>
+        )}
+
+        {/* OUTRAS ROTAS */}
+        <a href="/vestibular" className="font-medium">
+          Vestibular
+        </a>
+        <a href="/ouvidoria">Ouvidoria</a>
+        <a href="https://www.unicollege.net/cerrado/io03/Validador.aspx">
+          Diplomas
+        </a>
+
+        {/* BOTÃO INSCRIÇÃO */}
+        <a
+          href="https://unicollege.net/cerrado/ps/cadastroinc.aspx"
+          className="mt-4">
+          <button className="w-full h-11 bg-[#F5843D] text-white rounded-xl">
+            Inscreva-se
+          </button>
+        </a>
+      </nav>
+    );
+  }
+
   return (
     <div className="hidden md:flex items-center space-x-8">
       <div className="relative group ">
