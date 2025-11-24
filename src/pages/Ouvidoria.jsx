@@ -153,7 +153,7 @@ export default function Ouvidoria() {
                   abrirModal(
                     "E-mail",
                     <>
-                      <p>ouvidoria@faculdadecerrado.com</p>
+                      <p>ouvidoria@faculdadecerrado.edu.br</p>
                       {/* <p>atendimento@faculdadecerrado.com</p>
                       <p>financeiro@faculdadecerrado.com.br</p>
                       <p>secretaria@faculdadecerrado.com.br</p> */}
