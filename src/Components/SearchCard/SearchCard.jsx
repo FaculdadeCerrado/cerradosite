@@ -8,8 +8,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { TypeWriter } from "../TypeWriter/TypeWriter";
-
-const courseData = ["Direito", "Secretariado", "Gestão Pública", "Psicologia"];
+import { getCursos } from "../../service/cursoService";
 
 const courseCategories = [
   { value: "graduacao", label: "Graduação" },
@@ -22,10 +21,10 @@ const courseCategories = [
 ];
 
 const categoryIcons = {
-  graduacao: GraduationCap,
-  "pos-graduacao": BookOpen,
-  "curso-horas-complementares": Layers,
-  "cursos-tecnicos": Briefcase,
+  bacharelado: GraduationCap,
+  licenciatura: BookOpen,
+  tecnológico: Layers,
+  todos: Briefcase,
 };
 
 const texts = [
@@ -36,56 +35,83 @@ const texts = [
 ];
 
 export default function CourseSearch() {
-  const [selectedCategory, setSelectedCategory] = useState("graduacao");
+  const [selectedCategory, setSelectedCategory] = useState("todos");
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const [cursos, setCursos] = useState([]);
+
   const navigate = useNavigate();
 
+  // ===========================
+  // 1) Carrega cursos reais
+  // ===========================
+  useEffect(() => {
+    const fetchCursos = async () => {
+      try {
+        const data = await getCursos();
+        setCursos(data || []);
+      } catch (error) {
+        console.error("Erro ao carregar cursos:", error);
+      }
+    };
+    fetchCursos();
+  }, []);
+
+  // ===========================
+  // 2) Sistema de sugestões REAL
+  // ===========================
   useEffect(() => {
     if (searchTerm.length > 0) {
-      const categoryData = courseData[selectedCategory] || [];
-      const filtered = categoryData.filter((course) =>
-        course.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setSuggestions(filtered);
+      const termo = searchTerm.toLowerCase();
+
+      const filtrados = cursos.filter((curso) => {
+        const nome = curso.nome?.toLowerCase() || "";
+        const tipo = curso.tipo?.toLowerCase() || "";
+
+        const matchNome = nome.includes(termo);
+        const matchCategoria =
+          selectedCategory === "todos" || tipo === selectedCategory;
+
+        return matchNome && matchCategoria;
+      });
+
+      setSuggestions(filtrados);
       setShowSuggestions(true);
-      setNoResults(filtered.length === 0);
+      setNoResults(filtrados.length === 0);
     } else {
       setSuggestions([]);
       setShowSuggestions(false);
       setNoResults(false);
     }
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory, cursos]);
 
-  const handleSuggestionClick = (course) => {
-    setSearchTerm(course);
-    setShowSuggestions(false);
+  // ===========================
+  // 3) Clique em sugestão
+  // ===========================
+  const handleSuggestionClick = (curso) => {
+    navigate(`/info-curso/${curso.id}`);
+  };
+
+  // ===========================
+  // 4) Buscar (Enter ou Botão)
+  // ===========================
+  const handleSearch = () => {
     navigate(
-      `/curso/${encodeURIComponent(course.toLowerCase().replace(/\s+/g, "-"))}`
+      `/cursos?search=${encodeURIComponent(
+        searchTerm
+      )}&categoria=${selectedCategory}`
     );
   };
 
-  const handleCategoryCardClick = (category) => {
-    navigate(`/categoria/${category}`);
-  };
-
-  const handleSearch = () => {
-    if (searchTerm.trim()) {
-      navigate(
-        `/busca?q=${encodeURIComponent(
-          searchTerm
-        )}&categoria=${selectedCategory}`
-      );
-    }
-  };
-
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
+    if (e.key === "Enter") handleSearch();
+  };
+
+  const handleCategoryCardClick = (category) => {
+    navigate(`/cursos?categoria=${category}`);
   };
 
   const getCategoryLabel = (value) => {
@@ -169,7 +195,6 @@ export default function CourseSearch() {
                       className="w-full bg-white border border-purple-300 text-gray-800 pr-14 h-12 rounded-xl text-lg hover:bg-purple-50 focus:bg-white focus:border-purple-500 focus:outline-none transition-all duration-200 shadow-sm px-4"
                     />
 
-                    {/* Placeholder animado */}
                     {!searchTerm && (
                       <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
                         <TypeWriter
@@ -179,6 +204,7 @@ export default function CourseSearch() {
                         />
                       </div>
                     )}
+
                     <button
                       onClick={handleSearch}
                       className="absolute right-2 top-2 bg-gradient-to-r from-purple-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 h-8 w-8 rounded-lg shadow-lg transition-all duration-200 hover:scale-105 flex items-center justify-center">
@@ -189,12 +215,12 @@ export default function CourseSearch() {
                   {/* Suggestions Dropdown */}
                   {showSuggestions && (
                     <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl border-2 border-purple-200 z-50 max-h-60 overflow-y-auto">
-                      {suggestions.map((course, index) => (
+                      {suggestions.map((curso) => (
                         <button
-                          key={index}
-                          onClick={() => handleSuggestionClick(course)}
+                          key={curso.id}
+                          onClick={() => handleSuggestionClick(curso)}
                           className="w-full text-left px-6 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-orange-50 text-gray-800 border-b border-gray-100 last:border-b-0 transition-colors duration-150 first:rounded-t-xl last:rounded-b-xl">
-                          <span className="font-medium">{course}</span>
+                          <span className="font-medium">{curso.nome}</span>
                         </button>
                       ))}
                     </div>
@@ -202,7 +228,6 @@ export default function CourseSearch() {
                 </div>
               </div>
 
-              {/* No Results Message */}
               {noResults && searchTerm && (
                 <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 text-red-800 text-sm">
                   <span className="font-medium">
