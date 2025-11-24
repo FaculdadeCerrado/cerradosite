@@ -22,7 +22,7 @@ const RoutesNavBar = ({ mobile }) => {
         {/* INSTITUCIONAL */}
         <button
           onClick={() => setOpenInstitucional(!openInstitucional)}
-          className="flex justify-between items-center font-medium w-full">
+          className="flex justify-between items-center font-bold text-[#F5843D] w-full">
           Institucional
           <span>{openInstitucional ? "▲" : "▼"}</span>
         </button>
@@ -44,7 +44,7 @@ const RoutesNavBar = ({ mobile }) => {
         {/* COMUNICAÇÃO */}
         <button
           onClick={() => setOpenComunicacao(!openComunicacao)}
-          className="flex justify-between items-center font-medium w-full">
+          className="flex justify-between items-center font-bold text-[#F5843D] w-full">
           Comunicação
           <span>{openComunicacao ? "▲" : "▼"}</span>
         </button>
@@ -80,13 +80,13 @@ const RoutesNavBar = ({ mobile }) => {
         )}
 
         {/* NUPES */}
-        <a href="/nupe" className="font-medium">
+        <a href="/nupe" className="font-medium ">
           NUPE – Psicologia
         </a>
         <a href="/cpa">CPA</a>
 
         {/* CLÍNICA / CURSOS */}
-        <a href="/clinica" className="font-medium">
+        <a href="/clinica" className="font-medium text-[#F5843D]">
           Clínica Escola
         </a>
         <a href="/cursos">Cursos</a>
@@ -94,7 +94,7 @@ const RoutesNavBar = ({ mobile }) => {
         {/* BIBLIOTECA */}
         <button
           onClick={() => setOpenBiblioteca(!openBiblioteca)}
-          className="flex justify-between items-center font-medium w-full">
+          className="flex justify-between items-center font-bold text-[#F5843D]  w-full">
           Biblioteca
           <span>{openBiblioteca ? "▲" : "▼"}</span>
         </button>
