@@ -4,7 +4,7 @@ export const eventoBanners = {
       id: "1",
 
       desktop:
-        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento em andamento.webp",
+        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento%20em%20andamento.webp",
       alt: "Evento em andamento",
       link: null,
     },
@@ -15,7 +15,7 @@ export const eventoBanners = {
       id: "2",
 
       desktop:
-        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento em breve.webp",
+        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento%20em%20breve.webp",
       alt: "Evento em breve",
     },
   ],
@@ -24,7 +24,7 @@ export const eventoBanners = {
     {
       id: "3",
       desktop:
-        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento encerrado.webp",
+        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento%20encerrado.webp",
       alt: "Evento encerrado",
     },
   ],
@@ -34,7 +34,7 @@ export const eventoBanners = {
       id: "4",
 
       desktop:
-        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento cancelado.webp",
+        "https://gerenciador.faculdadecerrado.edu.br/uploads/BannerStatusEvento/Evento%20cancelado.webp",
       alt: "Evento cancelado",
     },
   ],
