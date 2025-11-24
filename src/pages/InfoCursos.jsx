@@ -15,6 +15,10 @@ export default function InfoCurso() {
   const [openModulos, setOpenModulos] = useState({});
   const [openMais, setOpenMais] = useState({});
 
+  // ESTADOS DA CALCULADORA DO ENEM
+  const [enemNota, setEnemNota] = useState(0);
+  const [enemDesconto, setEnemDesconto] = useState(0);
+
   useEffect(() => {
     const load = async () => {
       const data = await getCursoCompleto(id);
@@ -74,7 +78,7 @@ export default function InfoCurso() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}>
             {/* TABS */}
-            <div className="flex gap-4 border-b border-gray-300 dark:border-gray-700 pb-2">
+            <div className="flex gap-4 border-b border-gray-300 pb-2">
               {[
                 { key: "sobre", label: "Sobre", icon: Info },
                 { key: "matriz", label: "Matriz Curricular", icon: Layers },
@@ -108,7 +112,7 @@ export default function InfoCurso() {
                       <h2 className="text-xl font-semibold mb-2 text-black">
                         Objetivo
                       </h2>
-                      <p className=" text-gray-800   leading-relaxed">
+                      <p className="text-gray-800 leading-relaxed">
                         {curso.objetivo}
                       </p>
                     </section>
@@ -119,7 +123,7 @@ export default function InfoCurso() {
                       <h2 className="text-xl font-semibold mb-2 text-black">
                         Sobre o Curso
                       </h2>
-                      <p className=" text-gray-800   leading-relaxed">
+                      <p className="text-gray-800 leading-relaxed">
                         {curso.sobre}
                       </p>
                     </section>
@@ -143,7 +147,7 @@ export default function InfoCurso() {
                       item.text && (
                         <motion.div
                           key={item.key}
-                          className="border border-[#6B3E98]  rounded-xl p-4 mt-4   cursor-pointer hover:shadow-md transition-all"
+                          className="border border-[#6B3E98] rounded-xl p-4 mt-4 cursor-pointer hover:shadow-md transition-all"
                           onClick={() =>
                             setOpenMais({
                               ...openMais,
@@ -166,7 +170,7 @@ export default function InfoCurso() {
                                 animate={{ opacity: 1, height: "auto" }}
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{ duration: 0.3 }}
-                                className="mt-2 ">
+                                className="mt-2">
                                 {item.text}
                               </motion.p>
                             )}
@@ -177,7 +181,7 @@ export default function InfoCurso() {
                 </motion.div>
               )}
 
-              {/* CONTEÚDO: MATRIZ CURRICULAR */}
+              {/* MATRIZ CURRICULAR */}
               {tab === "matriz" && (
                 <motion.div
                   key="matriz"
@@ -193,7 +197,7 @@ export default function InfoCurso() {
                   {curso.modulos?.map((modulo, idx) => (
                     <motion.div
                       key={idx}
-                      className="border border-[#6B3E98]  rounded-xl p-4 mt-4   cursor-pointer hover:shadow-md transition-all"
+                      className="border border-[#6B3E98] rounded-xl p-4 mt-4 cursor-pointer hover:shadow-md transition-all"
                       whileHover={{ scale: 1.01 }}
                       onClick={() =>
                         setOpenModulos({
@@ -205,6 +209,7 @@ export default function InfoCurso() {
                         <p>{modulo.nome}</p>
                         {openModulos[idx] ? <ChevronUp /> : <ChevronDown />}
                       </div>
+
                       <AnimatePresence>
                         {openModulos[idx] && (
                           <motion.ul
@@ -212,7 +217,7 @@ export default function InfoCurso() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="ml-4 mt-3 list-disc space-y-1 ">
+                            className="ml-4 mt-3 list-disc space-y-1">
                             {modulo.disciplinas?.map((d) => (
                               <li key={d.id}>
                                 {d.nome}
@@ -256,20 +261,21 @@ export default function InfoCurso() {
             {curso.pre_requisitos?.length > 0 && (
               <>
                 <p className="font-semibold mt-4">Pré-requisitos:</p>
-                <ul className="list-disc ml-4 text-gray-800 ">
+                <ul className="list-disc ml-4 text-gray-800">
                   {curso.pre_requisitos.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
               </>
             )}
+
             {curso.turnos?.length > 0 && (
               <p className="mt-4 mb-4">
                 <strong>Turnos:</strong> {curso.turnos.join(", ")}
               </p>
             )}
 
-            {/* === BOTÃO DO WHATSAPP === */}
+            {/* BOTÃO WHATSAPP PADRÃO */}
             <p className="mt-4 text-lg font-bold">Tire sua dúvida!</p>
             <a
               href={`https://wa.me/556195838206?text=${encodeURIComponent(
@@ -281,6 +287,56 @@ export default function InfoCurso() {
               <FaWhatsapp className="w-8 h-8 text-white" />
               Falar no WhatsApp
             </a>
+
+            <div className="mt-10 border-t pt-6">
+              <h2 className="text-lg font-semibold text-[#6B3E98] mb-3">
+                Calculadora de Nota do ENEM
+              </h2>
+              <p className="text-gray-700 mb-2">Digite sua nota:</p>
+              <input
+                type="number"
+                placeholder="Ex: 750"
+                onChange={(e) => {
+                  const value = Number(e.target.value);
+                  let desconto = 0;
+
+                  if (value >= 300 && value <= 600) desconto = 20;
+                  else if (value >= 601 && value <= 700) desconto = 30;
+                  else if (value >= 701 && value <= 800) desconto = 50;
+                  else if (value >= 900 && value <= 1000) desconto = 100;
+
+                  setEnemNota(value);
+                  setEnemDesconto(desconto);
+                }}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+              />
+              {enemNota > 0 && (
+                <div className="mt-4 p-3 bg-purple-50 border border-purple-200 rounded-lg">
+                  <p>
+                    Sua nota: <strong>{enemNota}</strong>
+                  </p>
+                  <p>
+                    Desconto:{" "}
+                    <strong className="text-purple-600 text-xl">
+                      {enemDesconto}%
+                    </strong>
+                  </p>
+                </div>
+              )}
+
+              {enemDesconto > 0 && (
+                <a
+                  href={`https://wa.me/556195838206?text=${encodeURIComponent(
+                    `Olá! Minha nota no ENEM é ${enemNota} e ganhei um desconto de ${enemDesconto}% pelo site. Tenho interesse no curso "${curso.nome}".`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 px-4 rounded-xl shadow-md transition-all duration-300">
+                  <FaWhatsapp className="w-7 h-7 text-white" />
+                  Garantir Desconto
+                </a>
+              )}
+            </div>
           </motion.aside>
         </div>
       </div>
@@ -288,9 +344,9 @@ export default function InfoCurso() {
     </>
   );
 }
-{
-  /* DESENVOLVIDO POR JOÃO GABRIEL SOUTO 
-     -https://www.linkedin.com/in/gabrielsouto01
-     -https://github.com/soutozk
-     -https://www.instagram.com/soutozk/ */
-}
+
+/* DESENVOLVIDO POR JOÃO GABRIEL SOUTO  
+   - https://www.linkedin.com/in/gabrielsouto01
+   - https://github.com/soutozk
+   - https://www.instagram.com/soutozk/ 
+*/
