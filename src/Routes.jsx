@@ -45,7 +45,14 @@ function AppRoutes() {
         <Routes>
           {/* Páginas públicas */}
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/register"
+            element={
+              <PrivateRoute>
+                <Register />
+              </PrivateRoute>
+            }
+          />
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/links" element={<LinkBio />} />
