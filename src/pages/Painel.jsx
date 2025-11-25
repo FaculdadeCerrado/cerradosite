@@ -81,7 +81,7 @@ export default function PainelAdmin() {
     {
       title: "About / Sobre",
       icon: <Building2 size={20} />,
-      to: "/gerenciador-temas",
+      to: "/gerenciador-about",
     },
   ];
 
