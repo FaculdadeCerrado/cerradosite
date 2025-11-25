@@ -28,20 +28,32 @@ export default function Ouvidoria() {
     ouvidoria: "ouvidoria@faculdadecerrado.com.br",
   };
 
-  // Função de envio simulada
+  // Função de envio
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const destinatario = setoresEmails[formData.setor];
-    if (!destinatario) {
-      alert("Selecione um setor válido!");
-      return;
+
+    try {
+      const response = await fetch(
+        "https://api.faculdadecerrado.edu.br/enviar-ouvidoria.php",
+        // "https://api.faculdadecerrado.edu.br/PHPMailer/enviar-ouvidoria.php",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.status) {
+        alert("Mensagem enviada com sucesso!");
+        setFormData({ nome: "", email: "", mensagem: "" });
+      } else {
+        alert("Erro ao enviar: " + result.msg);
+      }
+    } catch (error) {
+      alert("Erro na conexão com o servidor.");
     }
-
-    alert(
-      `Mensagem enviada para o setor "${formData.setor.toUpperCase()}" (${destinatario}) com sucesso!`
-    );
-
-    setFormData({ nome: "", email: "", setor: "", mensagem: "" });
   };
 
   // Função para abrir modal
