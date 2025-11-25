@@ -34,6 +34,8 @@ import Gerenciadornoticias from "./pages/Admins/Gerenciadornoticias";
 import Gerenciadorcomunicados from "./pages/Admins/GerenciadorComunicados";
 import Gerenciadoreventos from "./pages/Admins/GerenciadorEventos";
 import GerenciadorTemas from "./pages/Admins/GerenciadorTema";
+import GerenciadorAbout from "./pages/Admins/GerenciadorAbout";
+
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PainelAdmin from "./pages/Painel";
@@ -92,6 +94,14 @@ function AppRoutes() {
             element={
               <PrivateRoute>
                 <GerenciadorCursos />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/gerenciador-about"
+            element={
+              <PrivateRoute>
+                <GerenciadorAbout />
               </PrivateRoute>
             }
           />

@@ -7,6 +7,7 @@ import {
   Bell,
   Calendar,
   Paintbrush,
+  Building2,
   Layers,
 } from "lucide-react";
 
@@ -75,6 +76,11 @@ export default function PainelAdmin() {
     {
       title: "Theme / Aparência",
       icon: <Paintbrush size={20} />,
+      to: "/gerenciador-temas",
+    },
+    {
+      title: "About / Sobre",
+      icon: <Building2 size={20} />,
       to: "/gerenciador-temas",
     },
   ];
