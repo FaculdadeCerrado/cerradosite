@@ -10,6 +10,7 @@ const NormasRegulamentos = () => {
       iconButton: <Eye className="w-4 h-4 text-green-500" />,
       buttonColor: "text-green-500",
       buttonText: "Visualizar",
+      link: "https://gerenciador.faculdadecerrado.edu.br/uploads/Biblioteca/Regulamento/Regulamento-da-Biblioteca.pdf",
     },
     {
       icon: <FileText className="w-10 h-10 text-orange-500" />,
@@ -18,6 +19,7 @@ const NormasRegulamentos = () => {
       iconButton: <Eye className="w-4 h-4 text-orange-500" />,
       buttonColor: "text-orange-500",
       buttonText: "Visualizar",
+      link: "https://gerenciador.faculdadecerrado.edu.br/uploads/Biblioteca/Normas-Abnt/Cat%C3%A1logo_ABNT-NBRs.pdf",
     },
     {
       icon: <Info className="w-10 h-10 text-purple-500" />,
@@ -25,7 +27,8 @@ const NormasRegulamentos = () => {
       description: "Guias práticos para uso dos recursos da biblioteca",
       iconButton: <Eye className="w-4 h-4 text-purple-500" />,
       buttonColor: "text-purple-500",
-      buttonText: "Consultar ",
+      buttonText: "Consultar",
+      link: "/manuais-informativos",
     },
   ];
 
@@ -47,11 +50,15 @@ const NormasRegulamentos = () => {
             <p className="mt-2 text-gray-600 text-sm text-center">
               {card.description}
             </p>
-            <button
+
+            <a
+              href={card.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`mt-4 inline-flex items-center gap-2 text-sm font-medium transition-colors ${card.buttonColor} hover:opacity-80`}>
               {card.iconButton}
               {card.buttonText}
-            </button>
+            </a>
           </div>
         ))}
       </div>

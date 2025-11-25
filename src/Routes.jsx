@@ -22,6 +22,7 @@ import JornaisEletronicos from "./pages/Biblioteca/JornaisEletronicos";
 import PeriodicosEletronicos from "./pages/Biblioteca/PeriodicosEletronicos";
 import BaseDeDados from "./pages/Biblioteca/BasesDeDados";
 import RepositorioPaulo from "./pages/Biblioteca/RepositorioPaulo";
+import ManuaisInformativos from "./pages/Biblioteca/ManuaisInformativos";
 
 // Outros
 import TourVirtual from "./Components/TourVirtual/TourVirtual";
@@ -77,6 +78,10 @@ function AppRoutes() {
           <Route
             path="/repositorio-paulo-freire"
             element={<RepositorioPaulo />}
+          />
+          <Route
+            path="/manuais-informativos"
+            element={<ManuaisInformativos />}
           />
           {/* Cursos */}
           <Route path="/cursos" element={<Cursos />} />
