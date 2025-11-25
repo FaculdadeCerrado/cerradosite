@@ -25,6 +25,13 @@ function Navbar() {
             </Link>
           </button>
         </div>
+        <div className="flex gap-4 text-black font-bold text-sm">
+          <button className="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition">
+            <Link to="/register" className="hover:opacity-80 transition">
+              Criar Users
+            </Link>
+          </button>
+        </div>
       </div>
     </nav>
   );

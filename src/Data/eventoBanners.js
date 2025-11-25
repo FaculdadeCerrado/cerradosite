@@ -2,7 +2,6 @@ export const eventoBanners = {
   em_andamento: [
     {
       id: "1",
-
       desktop:
         "https://gerenciador.faculdadecerrado.edu.br/uploads/Eventos/Eventocancelado.webp",
       alt: "Evento em andamento",
@@ -13,7 +12,6 @@ export const eventoBanners = {
   em_breve: [
     {
       id: "2",
-
       desktop:
         "https://gerenciador.faculdadecerrado.edu.br/uploads/Eventos/Eventoemandamento.webp",
       alt: "Evento em breve",
@@ -32,7 +30,6 @@ export const eventoBanners = {
   cancelado: [
     {
       id: "4",
-
       desktop:
         "https://gerenciador.faculdadecerrado.edu.br/uploads/Eventos/Eventocancelado.webp",
       alt: "Evento cancelado",

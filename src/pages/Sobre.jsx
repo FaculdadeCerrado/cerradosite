@@ -139,7 +139,7 @@ export default function FaculdadeCERRADO() {
         {/* Seção: Quem Somos */}
         <section id="sobre" className="mt-12  gap-6 ">
           <div
-            className="md:col-span-2 bg-white p-6 rounded-lg "
+            className="md:col-span-2 bg-white p-6 rounded-3xl "
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
@@ -174,7 +174,7 @@ export default function FaculdadeCERRADO() {
         <section className="mt-10 grid gap-6 md:grid-cols-3">
           <div
             id="missao"
-            className="bg-white p-6 rounded-lg "
+            className="bg-white p-6 rounded-3xl "
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
@@ -191,7 +191,7 @@ export default function FaculdadeCERRADO() {
 
           <div
             id="visao"
-            className="bg-white p-6 rounded-lg "
+            className="bg-white p-6 rounded-3xl "
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
@@ -214,7 +214,7 @@ export default function FaculdadeCERRADO() {
           </div>
 
           <div
-            className="bg-white p-6 rounded-lg "
+            className="bg-white p-6 rounded-3xl "
             style={{
               boxShadow:
                 "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",

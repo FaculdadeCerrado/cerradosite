@@ -323,7 +323,6 @@ export default function InfoCurso() {
                   </p>
                 </div>
               )}
-
               {enemDesconto > 0 && (
                 <a
                   href={`https://wa.me/556195838206?text=${encodeURIComponent(
