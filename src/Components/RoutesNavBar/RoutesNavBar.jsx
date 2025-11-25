@@ -106,7 +106,9 @@ const RoutesNavBar = ({ mobile }) => {
         )}
 
         {/* OUTRAS ROTAS */}
-        <a href="/vestibular" className="font-medium">
+        <a
+          href="https://unicollege.net/cerrado/ps/cadastroinc.aspx"
+          className="font-medium">
           Vestibular
         </a>
         <a href="/ouvidoria">Ouvidoria</a>
