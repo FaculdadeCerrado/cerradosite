@@ -26,12 +26,21 @@ export default function AboutManager() {
   const loadAbout = async () => {
     const data = await getAbout();
 
+    // Backend retornando array
+    if (data && Array.isArray(data) && data.length > 0) {
+      setForm(data[0]);
+      setHasRecord(true);
+      return;
+    }
+
+    // Backend retornando objeto único
     if (data && data.id) {
       setForm(data);
       setHasRecord(true);
-    } else {
-      setHasRecord(false);
+      return;
     }
+
+    setHasRecord(false);
   };
 
   const handleChange = (e) => {
