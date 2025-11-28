@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import NavBar from "../Components/NavBar/NavBar";
 import Banner from "../Components/BannerHome/BannerHome";
 import Footer from "../Components/Footer/footer.jsx";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 import { ClipboardCheck, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { getBanners } from "../service/bannerService";
 
 export default function CPA() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getBanners("cpa").then((res) => {
+      if (res.success) {
+        setImages(res.banners);
+      }
+    });
+  }, []);
+
   return (
     <main className="min-h-screen bg-white flex flex-col items-center">
       <NavBar />
-      <Banner images={[]} />
+      <Banner images={images} />
 
       {/* Seção principal reorganizada */}
       <section className="bg-gray-50 py-16 px-4 sm:px-6 w-full">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FullScreenBannerVideo from "../../Components/FullScreenBannerVideo/FullScreenBannerVideo";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { HomeBanners } from "../../Data/BannerData.js";
@@ -7,12 +7,22 @@ import Navbar from "../../Components/NavBar/NavBar";
 import Carrosel from "../../Components/Carrosel/Carrosel.jsx";
 import AboutClinic from "../../Components/AboutClinic/AboutClinic.jsx";
 import ProjectsSection from "../../Components/ProjectsSection/ProjectsSection.jsx";
+import { getBanners } from "../../service/bannerService";
 
 export default function ClinicaEscola() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getBanners("ClinicaEscola").then((res) => {
+      if (res.success) {
+        setImages(res.banners);
+      }
+    });
+  }, []);
   return (
     <main>
-      <Navbar />
-      <Banner images={HomeBanners} />
+      {/* <NavBar />*/}
+      <Banner images={images} />
       <AboutClinic />
       <Carrosel />
       <ProjectsSection />

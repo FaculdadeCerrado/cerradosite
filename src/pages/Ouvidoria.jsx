@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar/NavBar";
 import { OuvidoriaBanners } from "../Data/BannerData.js";
 import Banner from "../Components/BannerHome/BannerHome";
 import Footer from "../Components/Footer/footer.jsx";
 import WhatsAppWidget from "../Components/WppWidget/WppWidget";
 import { Mail, Phone, MapPin, X } from "lucide-react";
+import { getBanners } from "../service/bannerService";
 
 export default function Ouvidoria() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getBanners("ouvidoria").then((res) => {
+      if (res.success) {
+        setImages(res.banners);
+      }
+    });
+  }, []);
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -67,7 +77,7 @@ export default function Ouvidoria() {
   return (
     <main className="min-h-screen bg-white flex flex-col items-center">
       <NavBar />
-      <Banner images={OuvidoriaBanners} />
+      <Banner images={images} />
 
       {/* Seção principal */}
       <section className="bg-gray-50 py-16 px-6 md:px-16 w-full">

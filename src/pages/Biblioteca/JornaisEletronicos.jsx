@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Globe } from "lucide-react";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { JornaisBanners } from "../../Data/BannerData";
 import Footer from "../../Components/Footer/footer.jsx";
+import Navbar from "../../Components/NavBarBiblioteca/NavBarBiblioteca";
+import { getBanners } from "../../service/bannerService";
 
 export default function JornaisEletronicos() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getBanners("JornaisEletronicos").then((res) => {
+      if (res.success) {
+        setImages(res.banners);
+      }
+    });
+  }, []);
   const jornais = [
     [
       { nome: "A Notícia", link: "http://www.an.com.br/" },
@@ -54,7 +65,8 @@ export default function JornaisEletronicos() {
 
   return (
     <>
-      <Banner images={JornaisBanners} />
+      <Navbar />
+      <Banner images={images} />
       <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-6 flex flex-col items-center">
         <div className="max-w-6xl w-full">
           <div className="text-center md:text-left mb-6">

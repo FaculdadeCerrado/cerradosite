@@ -36,6 +36,7 @@ import Gerenciadorcomunicados from "./pages/Admins/GerenciadorComunicados";
 import Gerenciadoreventos from "./pages/Admins/GerenciadorEventos";
 import GerenciadorTemas from "./pages/Admins/GerenciadorTema";
 import GerenciadorAbout from "./pages/Admins/GerenciadorAbout";
+import GerenciadorBanners from "./pages/Admins/GerenciadorBanners";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -157,7 +158,8 @@ function AppRoutes() {
                 <PainelAdmin />
               </PrivateRoute>
             }
-          />
+          />{" "}
+          <Route path="/gerenciador-banner" element={<GerenciadorBanners />} />
         </Routes>
       </Router>
     </AuthProvider>

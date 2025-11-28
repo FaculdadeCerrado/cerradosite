@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Smartphone } from "lucide-react";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { PeriodicosBanners } from "../../Data/BannerData";
 import Footer from "../../Components/Footer/footer.jsx";
+import Navbar from "../../Components/NavBarBiblioteca/NavBarBiblioteca";
+import { getBanners } from "../../service/bannerService";
 
 export default function PeriodicosEletronicos() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getBanners("PeriodicosEletronicos").then((res) => {
+      if (res.success) {
+        setImages(res.banners);
+      }
+    });
+  }, []);
   const periodicos = {
     "Gestão em Recursos Humanos": [
       "CONTEXTUS (Fortaleza)",
@@ -213,7 +224,9 @@ export default function PeriodicosEletronicos() {
 
   return (
     <>
-      <Banner images={PeriodicosBanners} />
+      <Navbar />
+      <Banner images={images} />
+
       <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-6 flex flex-col items-center">
         <div className="max-w-6xl w-full">
           <div className="flex flex-col gap-10 items-center">

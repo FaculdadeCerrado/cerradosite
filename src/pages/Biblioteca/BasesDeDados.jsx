@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../Components/BannerHome/BannerHome";
 import { HomeBanners } from "../../Data/BannerData";
 import Footer from "../../Components/Footer/footer.jsx";
+import Navbar from "../../Components/NavBarBiblioteca/NavBarBiblioteca";
+import { getBanners } from "../../service/bannerService";
 
 export default function BasesDeDados() {
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    getBanners("JornaisEletronicos").then((res) => {
+      if (res.success) {
+        setImages(res.banners);
+      }
+    });
+  }, []);
   const bases = [
     {
       nome: "BDTD",
@@ -45,7 +56,8 @@ export default function BasesDeDados() {
 
   return (
     <>
-      <Banner images={HomeBanners} />
+      <Navbar />
+      <Banner images={images} />
       <section className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-16 px-6 flex flex-col items-center">
         <div className="max-w-6xl w-full text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-10">
