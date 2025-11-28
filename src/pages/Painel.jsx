@@ -83,6 +83,11 @@ export default function PainelAdmin() {
       icon: <Building2 size={20} />,
       to: "/gerenciador-about",
     },
+    {
+      title: "Banners",
+      icon: <Building2 size={20} />,
+      to: "/gerenciador-banner",
+    },
   ];
 
   return (
