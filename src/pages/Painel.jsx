@@ -88,6 +88,11 @@ export default function PainelAdmin() {
       icon: <Building2 size={20} />,
       to: "/gerenciador-banner",
     },
+    {
+      title: "Projetos Clinica",
+      icon: <Newspaper size={20} />,
+      to: "/gerenciador-projetos-clinica",
+    },
   ];
 
   return (

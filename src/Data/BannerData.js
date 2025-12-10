@@ -3,6 +3,7 @@ import BannerRepositorioAcademico from "../images/Banners/BannerRepositorioAcade
 import OuvidoriaBanner from "../images/Banners/BannerOuvidoria.png";
 import JornaisEletronicosBanner from "../images/Banners/BannerJornaisEletronicos.png";
 import PeriodicosEletronicosBanner from "../images/Banners/BannerPeriodicosEletronicos.png";
+import bannerclinica from "../images/bannerclinica.png";
 
 export const HomeBanners = [
   {
@@ -81,4 +82,11 @@ export const PeriodicosBanners = [
   // alt: "Banner About 1",
   // link: "#about",
   // },
+];
+
+export const BannerAgendamento = [
+  {
+    id: 1,
+    desktop: bannerclinica,
+  },
 ];

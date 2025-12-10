@@ -224,7 +224,7 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opaci
       </div>
 
       <a
-        href=""
+        href="/clinica-escola"
         className="relative text-black font-medium text-xl transition-colors after:content-[''] after:absolute after:left-1/2 after:-bottom-1 after:w-0 after:h-[2px] after:bg-orange-400 after:transition-all after:duration-500 after:ease-[cubic-bezier(0.25,0.8,0.25,1)]  hover:after:w-full hover:after:left-0">
         Clínica Escola
       </a>

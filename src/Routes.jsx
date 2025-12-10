@@ -37,6 +37,7 @@ import Gerenciadoreventos from "./pages/Admins/GerenciadorEventos";
 import GerenciadorTemas from "./pages/Admins/GerenciadorTema";
 import GerenciadorAbout from "./pages/Admins/GerenciadorAbout";
 import GerenciadorBanners from "./pages/Admins/GerenciadorBanners";
+import GerenciadorProjetcsClinic from "./pages/Admins/GerenciadorProjetcsClinic";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -159,7 +160,22 @@ function AppRoutes() {
               </PrivateRoute>
             }
           />{" "}
-          <Route path="/gerenciador-banner" element={<GerenciadorBanners />} />
+          <Route
+            path="/gerenciador-projetos-clinica"
+            element={
+              <PrivateRoute>
+                <GerenciadorProjetcsClinic />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/gerenciador-banner"
+            element={
+              <PrivateRoute>
+                <GerenciadorBanners />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
