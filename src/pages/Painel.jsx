@@ -8,7 +8,6 @@ import {
   Calendar,
   Paintbrush,
   Building2,
-  Layers,
 } from "lucide-react";
 
 // NAVBAR COMPONENT
@@ -92,6 +91,11 @@ export default function PainelAdmin() {
       title: "Projetos Clinica",
       icon: <Newspaper size={20} />,
       to: "/gerenciador-projetos-clinica",
+    },
+    {
+      title: "Calendario Academico",
+      icon: <Calendar size={20} />,
+      to: "/gerenciador-calendario",
     },
   ];
 

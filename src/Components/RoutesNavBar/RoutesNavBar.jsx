@@ -1,8 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getCalendars } from "../../service/calendarService";
 
 const RoutesNavBar = ({ mobile }) => {
   const navigate = useNavigate();
+  const [calendar, setCalendar] = useState([]);
+
+  useEffect(() => {
+    getCalendars().then((res) => {
+      if (res.length > 0) setCalendar(res[0]); // primeiro calendário
+    });
+  }, []);
 
   const goToComunicacao = (categoria) => {
     navigate("/comunicacao", { state: { categoria } });
@@ -51,6 +59,9 @@ const RoutesNavBar = ({ mobile }) => {
 
         {openComunicacao && (
           <div className="ml-4 flex flex-col space-y-2 animate-fadeIn">
+            <button className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
+              <a href={calendar?.file || "#"}>Calendario Academico</a>
+            </button>
             <button
               onClick={() => goToComunicacao("eventos")}
               className="text-left">
@@ -142,7 +153,7 @@ after:ease-[cubic-bezier(0.25,0.8,0.25,1)] hover:after:w-full hover:after:left-0
 
         {/* Dropdown */}
         <div
-          className="absolute left-0 top-full mt-1 w-96 bg-white shadow-lg rounded-md
+          className="absolute left-0 top-full mt-1 w-[500px] bg-white shadow-lg rounded-md
 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-10 grid grid-cols-2 gap-4 p-4">
           {/* Coluna Institucional */}
           <div>
@@ -171,6 +182,9 @@ opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opaci
             <p className="text-orange-500 font-semibold border-b border-orange-200 mb-2 pb-1">
               Comunicação
             </p>
+            <button className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">
+              <a href={calendar?.file || "#"}>Calendario Academico</a>
+            </button>
             <button
               onClick={() => goToComunicacao("eventos")}
               className="block text-left w-full px-2 py-1 rounded hover:bg-orange-100">

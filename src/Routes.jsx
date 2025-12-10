@@ -38,7 +38,7 @@ import GerenciadorTemas from "./pages/Admins/GerenciadorTema";
 import GerenciadorAbout from "./pages/Admins/GerenciadorAbout";
 import GerenciadorBanners from "./pages/Admins/GerenciadorBanners";
 import GerenciadorProjetcsClinic from "./pages/Admins/GerenciadorProjetcsClinic";
-
+import GerenciadorCalendario from "./pages/Admins/GerenciadorCalendar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PainelAdmin from "./pages/Painel";
@@ -173,6 +173,14 @@ function AppRoutes() {
             element={
               <PrivateRoute>
                 <GerenciadorBanners />
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/gerenciador-calendario"
+            element={
+              <PrivateRoute>
+                <GerenciadorCalendario />
               </PrivateRoute>
             }
           />
